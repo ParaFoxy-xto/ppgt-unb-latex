@@ -1,0 +1,56 @@
+\glsdefs@newdocentry{PDF}%
+{%
+name={\acronymfont {\glsentryshort {PDF}}},%
+sort={PDF},%
+type={acronym},%
+first={PDF},%
+firstplural={PDFs},%
+text={PDF},%
+plural={PDFs},%
+description={Portable Document Format},%
+descriptionplural={Portable Document Format},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Portable Document Format},%
+longplural={Portable Document Formats},%
+short={PDF},%
+shortplural={PDFs},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{HTML}%
+{%
+name={\acronymfont {\glsentryshort {HTML}}},%
+sort={HTML},%
+type={acronym},%
+first={HTML},%
+firstplural={HTMLs},%
+text={HTML},%
+plural={HTMLs},%
+description={HyperText Markup Language},%
+descriptionplural={HyperText Markup Language},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={HyperText Markup Language},%
+longplural={HyperText Markup Languages},%
+short={HTML},%
+shortplural={HTMLs},%
+counter={page},%
+parent={},%
+%
+}%
+

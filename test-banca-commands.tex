@@ -1,0 +1,44 @@
+% Test file to verify banca commands work correctly
+\documentclass[mestrado]{UnB-PPGT}
+
+% Test basic metadata
+\titulo{Teste de Sistema de Banca}
+\autor{João}{Silva}
+\orientador{Prof. Dr. Maria Santos}{UnB}
+\datadefesa{15}{12}{2024}
+\coordenador{Prof. Dr. Ana Costa}{UnB}
+
+% Test new banca system
+\membrobanca{Prof. Dr. Pedro Almeida}{USP}
+\membrobanca{Prof. Dr. Lucia Ferreira}{UFMG}
+
+% Test specialized banca commands
+\examinadorinterno{Prof. Dr. Carlos Lima}{UnB}
+\examinadorexterno{Prof. Dr. Ana Souza}{UFRJ}
+
+% Test with coorientador
+\coorientador{Prof. Dr. Roberto Costa}{UFSC}
+
+\palavraschave{teste, banca, sistema}
+\keywords{test, committee, system}
+
+\begin{document}
+
+% This would generate the approval page
+% \pretextual
+% \folhaaprovacao
+
+\textual
+\chapter{Teste}
+
+Este é um documento de teste para verificar se os comandos da banca estão funcionando corretamente.
+
+Os seguintes comandos foram testados:
+\begin{itemize}
+\item \texttt{\textbackslash membrobanca\{Nome\}\{Instituição\}}
+\item \texttt{\textbackslash examinadorinterno\{Nome\}\{Instituição\}}
+\item \texttt{\textbackslash examinadorexterno\{Nome\}\{Instituição\}}
+\item \texttt{\textbackslash membroespecial\{Nome\}\{Instituição\}\{Função\}}
+\end{itemize}
+
+\end{document}

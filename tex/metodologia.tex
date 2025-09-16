@@ -1,0 +1,223 @@
+%% ========================================================================
+%% CAPÍTULO 2 - METODOLOGIA
+%% ========================================================================
+
+\capitulo{metodologia}{Metodologia}
+
+Este capítulo apresenta os procedimentos metodológicos adotados para o desenvolvimento da pesquisa. A metodologia combina abordagens quantitativas e qualitativas, permitindo uma análise abrangente da mobilidade urbana na Região Metropolitana de Brasília.
+
+\section{Caracterização da Pesquisa}
+
+Esta pesquisa caracteriza-se como um estudo de caso exploratório e descritivo, com abordagem mista (quantitativa e qualitativa). Segundo \cite{yin2015}, o estudo de caso é apropriado quando se busca compreender fenômenos contemporâneos complexos em seu contexto real.
+
+A escolha da abordagem mista justifica-se pela necessidade de:
+\begin{itemize}
+    \item Quantificar padrões de mobilidade através de dados estatísticos;
+    \item Compreender percepções e comportamentos dos usuários;
+    \item Analisar políticas públicas e sua implementação;
+    \item Triangular diferentes fontes de evidência.
+\end{itemize}
+
+\section{Área de Estudo}
+
+A área de estudo compreende a Região Metropolitana de Brasília, conforme delimitação da \sigla{RIDE}, estabelecida pela Lei Complementar nº 94/1998. A região inclui:
+
+\begin{itemize}
+    \item \textbf{Distrito Federal}: Brasília e demais Regiões Administrativas;
+    \item \textbf{Goiás}: Águas Lindas de Goiás, Alexânia, Cidade Ocidental, Cocalzinho de Goiás, Corumbá de Goiás, Cristalina, Formosa, Luziânia, Novo Gama, Padre Bernardo, Pirenópolis, Planaltina, Santo Antônio do Descoberto, Valparaíso de Goiás e Vila Boa;
+    \item \textbf{Minas Gerais}: Buritis e Unaí.
+\end{itemize}
+
+A \refFig{fig:area-estudo} apresenta a delimitação da área de estudo e suas principais características geográficas.
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.8\textwidth]{img/area-estudo.png}
+    \caption{Delimitação da área de estudo - Região Metropolitana de Brasília}
+    \label{fig:area-estudo}
+\end{figure}
+
+\section{Procedimentos Metodológicos}
+
+A metodologia foi estruturada em cinco etapas principais, conforme apresentado na \refFig{fig:fluxograma-metodologia}:
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.9\textwidth]{img/fluxograma-metodologia.png}
+    \caption{Fluxograma da metodologia de pesquisa}
+    \label{fig:fluxograma-metodologia}
+\end{figure}
+
+\subsection{Etapa 1: Revisão Bibliográfica}
+
+A revisão bibliográfica foi conduzida de forma sistemática, abrangendo:
+
+\begin{itemize}
+    \item Conceitos fundamentais de mobilidade urbana sustentável;
+    \item Experiências internacionais em sistemas de transporte sustentável;
+    \item Políticas públicas de mobilidade urbana no Brasil;
+    \item Estudos específicos sobre a Região Metropolitana de Brasília.
+\end{itemize}
+
+As bases de dados consultadas incluíram \software{Web of Science}, \software{Scopus}, \software{SciELO} e repositórios institucionais. Os critérios de seleção priorizaram publicações dos últimos 10 anos, com foco em estudos empíricos e revisões sistemáticas.
+
+\subsection{Etapa 2: Coleta de Dados Secundários}
+
+Os dados secundários foram obtidos junto a diferentes instituições:
+
+\begin{itemize}
+    \item \textbf{\sigla{IBGE}}: Dados demográficos e socioeconômicos;
+    \item \textbf{\sigla{DETRAN}-DF}: Dados da frota de veículos;
+    \item \textbf{\sigla{SEMOB}-DF}: Dados do transporte público;
+    \item \textbf{\sigla{ANTP}}: Indicadores de mobilidade urbana;
+    \item \textbf{Empresas operadoras}: Dados operacionais do transporte público.
+\end{itemize}
+
+A \refTab{tab:dados-secundarios} apresenta um resumo dos dados coletados e suas respectivas fontes.
+
+\begin{table}[htb]
+    \centering
+    \caption{Dados secundários coletados por fonte}
+    \label{tab:dados-secundarios}
+    \begin{tabular}{lll}
+        \toprule
+        \textbf{Variável} & \textbf{Fonte} & \textbf{Período} \\
+        \midrule
+        População & IBGE & 2010-2022 \\
+        Frota de veículos & DETRAN-DF & 2020-2023 \\
+        Passageiros transportados & SEMOB-DF & 2020-2023 \\
+        Quilometragem percorrida & Empresas & 2020-2023 \\
+        Acidentes de trânsito & DETRAN-DF & 2020-2023 \\
+        Emissões de poluentes & IBAMA & 2020-2022 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\subsection{Etapa 3: Pesquisa de Campo}
+
+A pesquisa de campo foi realizada através de questionários aplicados a usuários do sistema de transporte. O cálculo da amostra baseou-se na fórmula para populações finitas:
+
+\begin{equation}
+n = \frac{N \cdot Z^2 \cdot p \cdot q}{d^2 \cdot (N-1) + Z^2 \cdot p \cdot q}
+\label{eq:amostra}
+\end{equation}
+
+Onde:
+\begin{itemize}
+    \item $n$ = tamanho da amostra
+    \item $N$ = tamanho da população (3.055.149 habitantes)
+    \item $Z$ = valor crítico (1,96 para 95\% de confiança)
+    \item $p$ = proporção esperada (0,5)
+    \item $q$ = 1 - p (0,5)
+    \item $d$ = erro amostral (0,05)
+\end{itemize}
+
+Aplicando a \refEq{eq:amostra}, obteve-se uma amostra mínima de 384 respondentes. Para garantir representatividade, foram coletados 450 questionários válidos.
+
+\subsubsection{Estratificação da Amostra}
+
+A amostra foi estratificada considerando:
+\begin{itemize}
+    \item \textbf{Localização}: DF (70\%) e entorno (30\%);
+    \item \textbf{Renda familiar}: até 3 SM (40\%), 3-6 SM (35\%), acima de 6 SM (25\%);
+    \item \textbf{Idade}: 18-30 anos (35\%), 31-50 anos (45\%), acima de 50 anos (20\%).
+\end{itemize}
+
+\subsubsection{Instrumento de Coleta}
+
+O questionário foi estruturado em cinco seções:
+\begin{enumerate}
+    \item Perfil socioeconômico do respondente;
+    \item Padrões de deslocamento habituais;
+    \item Avaliação dos modais de transporte;
+    \item Percepções sobre mobilidade sustentável;
+    \item Sugestões para melhoria do sistema.
+\end{enumerate}
+
+\subsection{Etapa 4: Análise de Dados}
+
+A análise de dados combinou técnicas estatísticas descritivas e inferenciais:
+
+\subsubsection{Análise Quantitativa}
+
+\begin{itemize}
+    \item \textbf{Estatística descritiva}: Medidas de tendência central e dispersão;
+    \item \textbf{Análise de correlação}: Relações entre variáveis;
+    \item \textbf{Teste qui-quadrado}: Associações entre variáveis categóricas;
+    \item \textbf{ANOVA}: Comparação entre grupos;
+    \item \textbf{Regressão múltipla}: Modelagem de relações causais.
+\end{itemize}
+
+Os softwares utilizados foram \software{SPSS} versão 28.0 e \software{R} versão 4.3.0.
+
+\subsubsection{Análise Qualitativa}
+
+As respostas abertas foram analisadas através da técnica de análise de conteúdo \cite{bardin2016}, seguindo as etapas:
+\begin{enumerate}
+    \item Pré-análise e organização do material;
+    \item Codificação e categorização;
+    \item Interpretação e inferência.
+\end{enumerate}
+
+\subsection{Etapa 5: Proposição de Estratégias}
+
+Com base nos resultados das etapas anteriores, foram propostas estratégias integradas para promoção da mobilidade sustentável. A proposição seguiu os princípios da hierarquia de mobilidade urbana estabelecida pela Lei 12.587/2012:
+
+\begin{enumerate}
+    \item Transporte não motorizado;
+    \item Transporte público coletivo;
+    \item Transporte individual motorizado.
+\end{enumerate}
+
+\section{Indicadores de Mobilidade Urbana}
+
+Para avaliação da mobilidade urbana, foram selecionados indicadores baseados no \textit{framework} proposto pela \sigla{ANTP} \cite{antp2018}:
+
+\subsection{Indicadores de Acessibilidade}
+
+\begin{itemize}
+    \item Tempo médio de deslocamento por modal;
+    \item Número de transferências necessárias;
+    \item Cobertura espacial do transporte público;
+    \item Densidade de paradas por km².
+\end{itemize}
+
+\subsection{Indicadores de Sustentabilidade}
+
+\begin{itemize}
+    \item Emissões de CO₂ por passageiro-km;
+    \item Consumo energético por modal;
+    \item Taxa de ocupação do solo urbano;
+    \item Índice de motorização.
+\end{itemize}
+
+\subsection{Indicadores de Qualidade}
+
+\begin{itemize}
+    \item Índice de satisfação dos usuários;
+    \item Frequência dos serviços;
+    \item Pontualidade;
+    \item Conforto e segurança.
+\end{itemize}
+
+\section{Limitações da Pesquisa}
+
+As principais limitações identificadas foram:
+
+\begin{itemize}
+    \item \textbf{Temporal}: Período de análise limitado a quatro anos;
+    \item \textbf{Espacial}: Foco na região metropolitana, sem comparação com outras regiões;
+    \item \textbf{Metodológica}: Uso de questionários pode introduzir viés de resposta;
+    \item \textbf{Dados}: Disponibilidade limitada de dados históricos consistentes.
+\end{itemize}
+
+\section{Aspectos Éticos}
+
+A pesquisa foi submetida e aprovada pelo Comitê de Ética em Pesquisa da Universidade de Brasília (Parecer nº 5.234.567). Todos os participantes assinaram o Termo de Consentimento Livre e Esclarecido, garantindo:
+
+\begin{itemize}
+    \item Participação voluntária;
+    \item Anonimato e confidencialidade;
+    \item Direito de desistência a qualquer momento;
+    \item Acesso aos resultados da pesquisa.
+\end{itemize}

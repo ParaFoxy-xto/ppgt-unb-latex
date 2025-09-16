@@ -1,0 +1,98 @@
+\documentclass[mestrado]{UnB-PPGT}
+
+% Metadados obrigatórios para teste
+\titulo{Teste dos Comandos para Elementos Comuns}
+\autor{João}{Silva}
+\orientador{Prof. Dr. Maria Santos}{UnB}
+\datadefesa{15}{12}{2024}
+\coordenador{Prof. Dr. Carlos Oliveira}{UnB}
+\membrobanca{Prof. Dr. Ana Costa}{UnB}
+\membrobanca{Prof. Dr. Pedro Lima}{UFMG}
+
+% Palavras-chave para teste
+\palavraschave{teste, elementos, LaTeX, PPGT}
+\keywords{test, elements, LaTeX, PPGT}
+
+\begin{document}
+
+\pretextual
+
+% Teste dos ambientes pré-textuais
+\begin{resumo}
+Este documento testa os comandos implementados para elementos comuns no template PPGT.
+\end{resumo}
+
+\begin{abstract}
+This document tests the implemented commands for common elements in the PPGT template.
+\end{abstract}
+
+\textual
+
+\chapter{Teste dos Comandos de Elementos Comuns}\label{cap:teste}
+
+\section{Teste de Figuras}
+
+% Teste do comando básico de figura (existente)
+% \figura[positioning]{image_file}{caption}{label}{includegraphics_options}
+\figura{img/positivo_cor.txt}{Esta é uma figura de teste usando o comando básico}{fig:teste1}{width=0.8\textwidth}
+
+% Teste de figura com largura personalizada (novo comando)
+\figuracom{img/positivo_cor.txt}{0.5\textwidth}{Figura com largura personalizada}{fig:teste2}
+
+% Teste de referência a figuras (usando comandos existentes)
+Como podemos ver na \refFig{fig:teste1} e na \refFig{fig:teste2}, os comandos funcionam corretamente.
+
+\section{Teste de Tabelas}
+
+% Teste do comando básico de tabela (existente)
+% \tabela{caption}{label}{column_spec}{table_content}
+\tabela{Tabela de teste usando comando básico}{tab:teste1}{|c|c|c|}{
+Coluna 1 & Coluna 2 & Coluna 3 \\
+Dados 1 & Dados 2 & Dados 3 \\
+Mais dados & Mais dados & Mais dados
+}
+
+% Teste de tabela PPGT com formatação específica (novo comando)
+\tabelappgt{|l|r|c|}{
+Item & Valor & Status \\
+Item A & 100 & Ativo \\
+Item B & 200 & Inativo \\
+Item C & 150 & Ativo
+}{Tabela com formatação específica PPGT}{tab:teste2}
+
+% Teste de referência a tabelas (usando comandos existentes)
+Os dados apresentados na \refTab{tab:teste1} e na \refTab{tab:teste2} demonstram o funcionamento dos comandos.
+
+\section{Teste de Equações}
+
+% Teste de equação básica (comando existente)
+% \equacao{label}{equation_content}
+\equacao{eq:einstein}{E = mc^2}
+
+% Teste de sistema de equações (novo comando)
+\sistema{
+x + y &= 10 \\
+2x - y &= 5
+}{eq:sistema}
+
+% Teste de equação em caixa (novo comando)
+\equacaocaixa{F = ma}{eq:newton}
+
+% Teste de referências a equações (usando comandos existentes)
+A famosa \refEq{eq:einstein} de Einstein, o \refEq{eq:sistema} linear, e a \refEq{eq:newton} de Newton.
+
+\section{Teste de Referências Cruzadas}
+
+Este capítulo (\refCap{cap:teste}) demonstra o uso de:
+\begin{itemize}
+\item Figuras: \refFig{fig:teste1} e \refFig{fig:teste2}
+\item Tabelas: \refTab{tab:teste1} e \refTab{tab:teste2}  
+\item Equações: \refEq{eq:einstein}, \refEq{eq:sistema}, e \refEq{eq:newton}
+\item Referências abreviadas: \reffigabrev{fig:teste1}, \reftababrev{tab:teste1}, \refeqabrev{eq:einstein}
+\end{itemize}
+
+\chapter{Conclusão}\label{cap:conclusao}
+
+Os comandos para elementos comuns foram implementados com sucesso, conforme demonstrado no \refCap{cap:teste}.
+
+\end{document}

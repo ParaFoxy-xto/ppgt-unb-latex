@@ -1,0 +1,56 @@
+\glsdefs@newdocentry{PPGT}%
+{%
+name={\acronymfont {\glsentryshort {PPGT}}},%
+sort={PPGT},%
+type={acronym},%
+first={PPGT},%
+firstplural={PPGTs},%
+text={PPGT},%
+plural={PPGTs},%
+description={Programa de Pós-Graduação em Transportes},%
+descriptionplural={Programa de Pós-Graduação em Transportes},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Programa de Pós-Graduação em Transportes},%
+longplural={Programa de Pós-Graduação em Transportess},%
+short={PPGT},%
+shortplural={PPGTs},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{UnB}%
+{%
+name={\acronymfont {\glsentryshort {UnB}}},%
+sort={UnB},%
+type={acronym},%
+first={UnB},%
+firstplural={UnBs},%
+text={UnB},%
+plural={UnBs},%
+description={Universidade de Brasília},%
+descriptionplural={Universidade de Brasília},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Universidade de Brasília},%
+longplural={Universidade de Brasílias},%
+short={UnB},%
+shortplural={UnBs},%
+counter={page},%
+parent={},%
+%
+}%
+

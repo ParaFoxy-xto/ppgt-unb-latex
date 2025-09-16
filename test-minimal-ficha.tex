@@ -1,0 +1,68 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+
+% Simulate the cataloging card functionality
+\newcommand{\fichacatalograficaminimal}{%
+    \vspace*{\fill}%
+    
+    \begin{center}%
+        % Caixa da ficha catalográfica com bordas
+        \fbox{%
+            \begin{minipage}{0.85\textwidth}%
+                \vspace{0.5cm}%
+                \begin{center}%
+                    \textbf{Ficha catalográfica elaborada pela Biblioteca Central da Universidade de Brasília}%
+                \end{center}%
+                \vspace{0.5cm}%
+                
+                % Dados bibliográficos padronizados
+                \small%
+                \textbf{SILVA, João}\\
+                \hspace*{1em}Sistema de Transporte Inteligente para Otimização de Tráfego Urbano : Uma Abordagem Baseada em Algoritmos de Aprendizado de Máquina / João Silva. -- Brasília, 2024.\\
+                
+                \hspace*{1em}150 p. : il. ; 30 cm.\\[0.5em]
+                
+                \hspace*{1em}Dissertação (Mestrado em Transportes) -- Universidade de Brasília, Faculdade de Tecnologia, Departamento de Engenharia Civil e Ambiental, Programa de Pós-Graduação em Transportes, 2024.\\[0.5em]
+                
+                \hspace*{1em}Orientador: Prof. Dr. Maria Santos. Coorientador: Prof. Dr. Carlos Oliveira.\\[0.5em]
+                
+                \hspace*{1em}1. Transporte urbano. Sistemas inteligentes. Algoritmos. Otimização. I. Prof. Dr. Maria Santos, Orientador. II. Universidade de Brasília. III. Título.\\[0.5em]
+                
+                \hspace*{1em}CDU: 656.1:004.8\\
+                \hspace*{1em}CDD: 388.4\\
+                \normalsize%
+                \vspace{0.5cm}%
+            \end{minipage}%
+        }%
+    \end{center}%
+    
+    % Seção de cessão de direitos
+    \vspace{1cm}%
+    \begin{center}%
+        \textbf{CESSÃO DE DIREITOS}%
+    \end{center}%
+    \vspace{0.5cm}%
+    
+    \small%
+    NOME DO AUTOR: João Silva\\%
+    TÍTULO DA DISSERTAÇÃO: Sistema de Transporte Inteligente para Otimização de Tráfego Urbano : Uma Abordagem Baseada em Algoritmos de Aprendizado de Máquina\\%
+    GRAU: Mestre em Transportes\\%
+    ANO: 2024\\[0.5em]%
+    
+    É concedida à Universidade de Brasília permissão para reproduzir cópias desta dissertação e emprestar ou vender tais cópias somente para propósitos acadêmicos e científicos. O autor reserva outros direitos de publicação e nenhuma parte desta dissertação pode ser reproduzida sem a autorização por escrito do autor.\\[1em]%
+    
+    \rule{8cm}{0.4pt}\\%
+    João Silva\\%
+    Brasília/DF\\%
+    Brasil\\%
+    \normalsize%
+}
+
+\begin{document}
+
+\thispagestyle{empty}
+\fichacatalograficaminimal
+
+\end{document}

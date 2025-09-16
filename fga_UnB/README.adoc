@@ -1,0 +1,187 @@
+:pdf_link: https://github.com/manoelcampos/ft-unb-latex-template/blob/gh-pages/principal.pdf
+
+:numbered:
+:icons: font
+:toc-title: Sumário
+ifndef::env-github[:toc: left]
+ifdef::env-github[:outfilesuffix: .adoc]
+
+ifdef::env-github,env-browser[]
+// Exibe ícones para os blocos como NOTE e IMPORTANT no GitHub
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+
+:description: Modelo em Latex para elaboração de monografias, dissertações e teses da Universidade de Brasília (UnB)
+
+= {description} image:https://github.com/manoelcampos/ft-unb-latex-template/actions/workflows/latexmk.yml/badge.svg[link=https://github.com/manoelcampos/ft-unb-latex-template/actions/workflows/latexmk.yml]
+
+ifndef::env-github[]
+link:https://github.com/manoelcampos/ft-unb-latex-template/[Acesse no GitHub image:https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png[width=10%]]
+endif::[]
+
+pass:[<p align="center">]
+image:imagens/exemplo.png[link={pdf_link}]
+pass:[</p>]
+
+== Introdução
+
+Este é um modelo (template) Latex **NÃO OFICIAL** para elaboração de monografias, 
+dissertações e teses da http://ftd.unb.br[Faculdade de Tecnologia (FT)] da http://unb.br[UnB]. 
+Esta é uma versão atualizada, adicionando recursos como "página de assinaturas" 
+e organizando o código do template para que o mesmo não fique misturado com o conteúdo do documento escrito pelo acadêmico. 
+
+Esta versão também removeu a necessidade de instalação do template em uma pasta específica do sistema, 
+permitindo que ele fique dentro da pasta da dissertação/tese e tornando seu uso direto: 
+usar o template, fazer as alterações que desejar e compilar, desde que tenha uma distribuição Latex instalada 
+(veja detalhes na seção a seguir). 
+Além disso, a remoção da necessidade de instalação do template em uma pasta global específica para sistemas &#42;nix, 
+permite o uso do mesmo em qualquer sistema operacional que tenha um compilador *latexmk* (ou até o *PDFLaTeX*).
+
+IMPORTANT: Este projeto visa colaborar com outros estudantes da UnB, facilitando a tarefa de escrever um trabalho acadêmico.
+Muita dedicação foi empenhada aqui. Desta forma, contribuições de todos os tipos são bem vindas. Você pode começar dando uma estrela ⭐️ ao projeto e divulgando entre seus colegas de universidade e grupos de pesquisa.
+
+== Exemplo
+
+Clique link:{pdf_link}[aqui para acessar um PDF] de uma dissertação de exemplo. E o mais legal é que ao fazer um push, seu documento é compilado e o PDF atualizado automaticamente. Desta forma, basta passar o link acima para o(a) orientador(a) que ele(a) sempre terá a versão mais atual do artigo. E se você quiser saber de qual versão do documento foi gerado o PDF, basta olhar o último commit no branch `gh-pages`.
+
+IMPORTANT: Ao usar o template, você precisa apenas alterar o link do PDF para apontar pro seu repositório,
+editando este arquivo e alterando o atributo `:pdf_link` no topo dele.
+
+== Como utilizar o modelo para escrever sua monografia, dissertação ou tese
+
+Para utilizar o modelo são necessários alguns softwares instalados em seu sistema operacional.
+O modelo pode ser utilizado em Windows, Linux e macOS.
+A seguir são apresentados mais detalhes.
+
+=== Editor de documentos LaTeX
+
+Para criar e editar arquivos tex, apesar de não ser um pré-requisito, o mais recomendável é utilizar um editor LaTeX específico.
+No entanto, pode-se editar os arquivos em qualquer editor de texto que suporte codificação de caracteres em UTF-8
+(como o Notepad do Windows ou qualquer editor de texto nativo de sistemas Linux e macOS).
+
+Existem diversas alternativas de editores, tanto gratuitos como pagos.
+Um excelente editor que funciona em diversos sistemas operacionais
+é o http://www.texstudio.org[TeXstudio], que foi baseado em versões atualmente descontinuadas
+do Texmaker e TexMakerX. 
+
+=== Pré-requisitos para compilar seu documento
+
+Para compilar seu documento utilizando este modelo é preciso ter uma uma distribuição LaTeX instalada. 
+Existem distribuições disponíveis para os sistemas operacionais mais conhecidos como Windows, Linux e macOS,
+como será visto a seguir.
+
+O compilador a ser utilizado, disponível após a instalação da distribuição LaTeX, é o *latexmk*.
+
+As sub-secções a seguir apresentam detalhes de instalação dos pré-requisitos para cada um dos sistemas operacionais em que o modelo foi testado.
+
+==== Usuários de Windows
+
+Em sistemas Windows deve ser instalada a distribuição LaTeX denominada http://miktex.org[MiKTeX].
+
+==== Usuários de Linux
+
+Em sistemas Linux deve ser instalada a distribuição LaTeX denominada *texlive-full*.
+A instalação pode ser feita por meio de ferramentas gráficas como a "Central de Software" disponível em sistemas
+como Ubuntu, ou por meio do terminal utilizando um gerenciador de pacotes.
+
+Diferentes distribuições Linux possuem seus próprios gerenciadores de pacote e cada usuário deve verificar qual
+é o utilizado em seu sistema. No entanto, a seguir são mostrados alguns exemplos
+de gerenciadores de pacotes, a serem executados a partir de um terminal, para distribuições Linux conhecidas.
+
+- Debian e derivados (como Ubuntu e Linux Mint): `sudo apt-get install texlive-full`
+- Red Hat e derivados (como Fedora e CentOS): `sudo yum install texlive-full`
+- ArchLinux e derivados (como ArchBang): `sudo pacman install texlive-full`
+
+==== Usuários de macOS
+
+Em sistemas macOS deve ser instalada a distribuição LaTeX denominada https://tug.org/mactex/[MacTeX].
+
+=== Como compilar o seu documento para PDF a partir do seu computador
+
+Para compilar seu documento para um arquivo PDF utilizando um editor LaTeX como 
+descrito nas seções acima, pode ser utilizado o compilador *latexmk*,
+onde o processo é bem mais fácil e sem transtornos do que usar diretamente o *PDFLaTeX* (normalmente definido como padrão nos editores). 
+O template é um documento complexo que inclui índices adicionais (como índice de siglas),
+o que exige algumas configurações a mais para que o documento seja compilado com todos os índices
+esperados. Para isto, há duas formas de compilar, como mostrado a seguir.
+Mas lembre que ao fazer push para o GitHub, o documento é compilado e o PDF gerado automaticamente.
+
+==== Compilando pelo seu editor LaTeX
+
+Se você usar o botão de compilação do seu editor, o documento deve ser gerado normalmente,
+mas sem todos os índices mencionados acima. Por isso, você precisa configurar seu editor.
+O local onde define-se o comando de compilação varia de acordo com o editor em uso.
+Assim, verifique a documentação do seu editor para mais detalhes.
+Quando encontrar o local onde o compilador pode ser configurado,
+abra o arquivo link:Makefile[Makefile] e copie o comando `latexmk` como mostrado lá.
+
+==== Compilando pelo terminal no Linux/macOS
+
+Para os programadores que são familiarizados com o terminal,
+há um arquivo link:Makefile[Makefile] que permite compilar o documento
+por meio da linha de comando. Desta forma, tendo o programa *make* instalado
+(que é padrão em sistemas Linux e macOS),
+há os comandos abaixo disponíveis:
+
+- **make** compila o documento; 
+- **make clean** apaga todos os arquivos temporários criados no processo de compilação.
+
+Se o nome do arquivo principal do seu trabalho for diferente de *principal.tex*,
+para compilar utilizando o comando *make*, é preciso editar o arquivo link:Makefile[Makefile] 
+e informar o nome do documento tex principal na primeira linha do *Makefile*.
+
+== Estrutura do projeto
+Depois de baixados os arquivos do projeto você terá a seguinte estrutura de pastas:
+
+- **template-FT-UnB**: arquivos do template. A não ser que deseje fazer melhorias ou correções no template, 
+  os arquivos desta pasta não devem ser modificados.
+- **imagens**: pasta onde as imagens da sua monografia/dissertação/tese devem ser salvas para facilitar a organização
+
+Os arquivos na raiz da pasta são arquivos de exemplo de uma dissertação de mestrado. 
+O arquivo principal foi apropriadamente nomeado de link:principal.tex[principal.tex]. 
+A partir dele é feita a compilação do documento. 
+Cada arquivo .tex adicional é uma parte específica do documento de exemplo (como resumo, capítulos, conclusão, apêndices, etc). 
+As referências a serem utilizadas devem estar no arquivo link:referencias.bib[referencias.bib].
+
+== Autor
+Não sou o autor original deste projeto 😊, fiz apenas a reestruturação do mesmo para facilitar o uso e impedir 
+que comandos do template sejam misturados ao texto do documento.
+
+Desta forma, os créditos pela autoria do projeto devem ser dados ao 
+https://lara.unb.br/~gaborges/[Prof. D.Sc. Geovany Araujo Borges (UnB)].
+
+== Colaboradores
+- Nathalie Pinheiro
+- André Calmon
+- Renan Utida
+- http://twitter.com/manoelcampos[Manoel Campos] (eu 😀)
+
+== Licença
+
+O template é disponibilizado sob a licença link:template-FT-UnB/LICENSE[Creative Commons Attribution-NonCommercial 4.0 (CC BY-NC 4.0)].
+O LICENSE na raiz é apenas uma cópia de tal arquivo. Se você for criar um documento a partir deste template,
+fique à vontade para excluir tal cópia e incluir no lugar uma licença específica para o seu documento.
+O arquivo original da licença não deve ser excluído.
+
+=== Exemplo de atribuição conforme os termos da licença
+
+Segue um exemplo de como realizar a atribuição a esse projeto conforme os tempos da licença no formato markdown:
+
+```
+O _modelo não oficial de Latex da Faculdade de tecnologia da Universidade de Brasília para monografias, teses e dissertações_ não é de minha autoria. Seguem, abaixo, os créditos e atribuições referentes ao **material licenciado**.
+
+- Autor original do material licenciado: [Professor D.Sc. Geovany Araújo Borges](http://www2.ene.unb.br/gaborges/) da Universidade de Brasília.
+- Licenciante do material licenciado: [Manoel Campos da Silva Filho](https://github.com/manoelcampos).
+- Demais colaboradores mencionados pelo material licenciado:
+  - Nathalie Pinheiro;
+  - André Calmon;
+  - Renan Utida.
+- Link para o material licenciado: https://github.com/manoelcampos/ft-unb-latex-template
+- Licença utilizada pelo material licenciado: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)
+- Mudanças realizadas sobre o material licenciado:
+  - Colocar aqui as mudanças feitas sobre o material licenciado;
+```
