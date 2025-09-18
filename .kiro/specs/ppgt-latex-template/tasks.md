@@ -122,6 +122,7 @@
   - Implementar comandos para tabelas com formatação padrão
   - Desenvolver sistema de numeração e formatação de equações
   - Criar comandos para referências cruzadas otimizadas
+<<<<<<< HEAD
   - _Requirements: 5.1, 5.2, 5.3, 5.4_
 - [x] 10. Implementar sistema de numeração e formatação
 
@@ -133,6 +134,12 @@
 
 - [x] 10. Implementar sistema de numeração e formatação
 
+=======
+  - _Requirements: 5.1, 5.2, 5.3, 5.4_ 
+
+
+- [ ] 10. Implementar sistema de numeração e formatação
+>>>>>>> 7953c5897e91cff7b31e9d7633c26324f86bf533
   - Configurar numeração romana para páginas pré-textuais
   - Implementar numeração arábica para páginas textuais
   - Configurar formatação de capítulos, seções e subseções
@@ -140,12 +147,16 @@
   - _Requirements: 1.1, 1.2_
 
 - [x] 11. Criar sistema de tratamento de erros e validação
+<<<<<<< HEAD
 
 
 
 
 
   - Implementar validação de campos    obrigatórios
+=======
+  - Implementar validação de campos obrigatórios
+>>>>>>> 7953c5897e91cff7b31e9d7633c26324f86bf533
   - Criar mensagens de erro claras e informativas
   - Adicionar verificações de compatibilidade de pacotes
   - Desenvolver sistema de fallbacks para recursos não disponíveis
@@ -214,3 +225,10 @@
   - Finalizar configurações de margens e espaçamentos
   - Realizar testes finais de integração completa
   - _Requirements: 1.1, 1.2, 1.3, 1.4_
+
+- [ ] 18. Revisar e refatorar o código para limpar duplicidades
+  - O comando \sigla aparece duas vezes: uma definição básica e uma versão aprimorada com validação.
+  - O ambiente abstract é redefinido para incluir keywords, e também existe o ambiente abstractcomkeywords.
+  - O comando \defaultspacing aparece mais de uma vez, mas com funções semelhantes.
+  - Os comandos para referências cruzadas (\refFig, \reffigabrev, etc.) aparecem em diferentes versões.
+  - O comando \@makechapterhead e \@makeschapterhead são definidos e depois redefinidos para formatação avançada.
