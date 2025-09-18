@@ -1,0 +1,99 @@
+%% Teste completo de integração bibliográfica
+%% Este arquivo demonstra todos os recursos de bibliografia da classe UnB-PPGT
+
+\documentclass[mestrado]{UnB-PPGT}
+
+%% Metadados mínimos para teste
+\titulo{Demonstração Completa do Sistema Bibliográfico}
+\autor{Teste}{Usuario}
+\orientador{Prof. Dr. Orientador Teste}{Universidade de Brasília}
+\diamesano{1}{1}{2024}
+\membrobancafunc{Prof. Dr. Orientador Teste}{Universidade de Brasília}{Orientador}
+\membrobancafunc{Prof. Dr. Membro 1}{Universidade de Brasília}{Examinador}
+\membrobancafunc{Prof. Dr. Membro 2}{Universidade Federal de Goiás}{Examinador Externo}
+
+\begin{document}
+
+\pretextual
+
+\begin{resumo}
+Este documento demonstra o sistema bibliográfico integrado da classe UnB-PPGT, incluindo diferentes tipos de citação, formatação automática de referências e compatibilidade com natbib.
+\end{resumo}
+
+\textual
+
+\chapter{Demonstração do Sistema Bibliográfico}
+
+Este capítulo demonstra os recursos bibliográficos implementados na classe UnB-PPGT.
+
+\section{Citações Básicas}
+
+\subsection{Citações no Texto}
+Exemplo de citação integrada ao texto: \citeonline{vasconcellos2012} apresenta uma análise abrangente da mobilidade urbana no contexto brasileiro.
+
+\subsection{Citações entre Parênteses}
+A mobilidade urbana é um tema complexo que envolve múltiplas dimensões \cite{vasconcellos2012}.
+
+\section{Citações Avançadas}
+
+\subsection{Citações com Página}
+Para citações específicas: \citepag{p. 45}{silva2019} discute os padrões de mobilidade.
+
+Citação no texto com página: \citeonlinepag{p. 123}{oliveira2021} aborda questões de sustentabilidade.
+
+\subsection{Citações Múltiplas}
+Vários autores tratam do tema de mobilidade urbana \cite{vasconcellos2012,silva2019,oliveira2021}.
+
+\subsection{Citações de Autor e Ano}
+Segundo \citeauthor{costa2018}, em \citeyear{costa2018}, o planejamento urbano é fundamental.
+
+Formato autor-ano: \citeauthoryear{ferreira2021}.
+
+\section{Citações Especializadas}
+
+\subsection{Citação Apud}
+Exemplo de citação indireta: \citeapud{costa2018}{silva2019}.
+
+\subsection{Citações de Legislação}
+Referência à legislação: \citelaw{brasil2012}.
+
+\subsection{Citações de Dados e Relatórios}
+Dados estatísticos: \citedata{ibge2022}.
+
+Relatórios técnicos: \citereport{detran2023}.
+
+\section{Tipos de Referências}
+
+\subsection{Livros}
+Referência a livro: \cite{yin2015}.
+
+\subsection{Artigos em Periódicos}
+Artigo científico: \cite{silva2019}.
+
+\subsection{Teses e Dissertações}
+Trabalho acadêmico: \cite{santos2020}.
+
+\subsection{Recursos Online}
+Fonte online: \cite{who2021}.
+
+\subsection{Normas Técnicas}
+Norma ABNT: \cite{abnt2020}.
+
+\chapter{Formatação da Bibliografia}
+
+A bibliografia é formatada automaticamente seguindo as normas acadêmicas, com:
+
+\begin{itemize}
+\item Espaçamento adequado entre entradas
+\item Fonte menor para melhor legibilidade
+\item Formatação consistente para diferentes tipos de referência
+\item Integração automática ao sumário
+\item Suporte a hyperlinks (quando habilitado)
+\end{itemize}
+
+\postextual
+
+%% Bibliografia - demonstra o comando aprimorado
+\bibliography{bibliografia}
+
+\end{document}

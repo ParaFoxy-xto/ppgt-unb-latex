@@ -1,0 +1,70 @@
+\begin{thebibliography}{1}
+  \providebibliographyfont{name}{}%
+  \providebibliographyfont{lastname}{}%
+  \providebibliographyfont{title}{\emph}%
+  \providebibliographyfont{jtitle}{\btxtitlefont}%
+  \providebibliographyfont{etal}{\emph}%
+  \providebibliographyfont{journal}{}%
+  \providebibliographyfont{volume}{}%
+  \providebibliographyfont{ISBN}{\MakeUppercase}%
+  \providebibliographyfont{ISSN}{\MakeUppercase}%
+  \providebibliographyfont{url}{\url}%
+  \providebibliographyfont{numeral}{}%
+  \expandafter\btxselectlanguage\expandafter {\btxfallbacklanguage}
+
+\expandafter\btxselectlanguage\expandafter {\btxfallbacklanguage}
+\bibitem {vasconcellos2012}
+\btxnamefont {\btxlastnamefont {Vasconcellos}, Eduardo\btxfnamespacelong
+  Alcântara~de}\btxauthorcolon\ \btxtitlefont {Mobilidade urbana e cidadania}.
+\newblock \btxpublisherfont {Senac São Paulo}, São Paulo, \btxeditionnumlong
+  {1}{}, 2012\ifbtxprintISBN {, \mbox{\btxISBN~\btxISBNfont
+  {978-85-396-0274-8}}}.
+
+\bibitem {silva2019}
+\btxnamefont {\btxlastnamefont {Silva}, João}, \btxnamefont {Maria
+  \btxlastnamefont {Santos}}\btxandcomma {} \btxandlong {}\ \btxnamefont {Pedro
+  \btxlastnamefont {Oliveira}}\btxauthorcolon\ \btxjtitlefont {\btxifchangecase
+  {Padrões de mobilidade urbana em brasília: uma análise temporal}{Padrões
+  de mobilidade urbana em Brasília: uma análise temporal}}.
+\newblock \btxjournalfont {Revista Brasileira de Estudos Urbanos e Regionais},
+  21(2):245--267, 2019.
+
+\bibitem {oliveira2021}
+\btxnamefont {\btxlastnamefont {Oliveira}, Ana}, \btxnamefont {Carlos
+  \btxlastnamefont {Lima}}\btxandcomma {} \btxandlong {}\ \btxnamefont
+  {Fernanda \btxlastnamefont {Costa}}\btxauthorcolon\ \btxjtitlefont
+  {\btxifchangecase {Sustentabilidade no transporte público: o caso de
+  brasília}{Sustentabilidade no transporte público: o caso de Brasília}}.
+\newblock \btxjournalfont {Transportes}, 29(1):15--32, 2021.
+
+\bibitem {costa2018}
+\btxnamefont {\btxlastnamefont {Costa}, Roberto} \btxandlong {}\ \btxnamefont
+  {Ana\btxfnamespacelong Beatriz \btxlastnamefont {Santos}}\btxauthorcolon\
+  \btxjtitlefont {\btxifchangecase {Planejamento urbano e mobilidade:
+  reflexões sobre brasília}{Planejamento urbano e mobilidade: reflexões
+  sobre Brasília}}.
+\newblock \btxjournalfont {Cadernos Metrópole}, 20(43):789--812, 2018.
+
+\bibitem {brasil2012}
+\btxnamefont {\btxlastnamefont {{Brasil}}}\btxauthorcolon\ \btxtitlefont
+  {\btxifchangecase {Lei nº 12.587, de 3 de janeiro de 2012. institui as
+  diretrizes da política nacional de mobilidade urbana}{Lei nº 12.587, de 3
+  de janeiro de 2012. Institui as diretrizes da Política Nacional de
+  Mobilidade Urbana}}, 2012.
+\newblock {\latintext
+  \btxurlfont{http://www.planalto.gov.br/ccivil_03/_ato2011-2014/2012/lei/l12587.htm}}\empty
+  \btxurldatecomment {\btxkeywordlanguage {\btxurldatefont{2023-08-15}}}.
+
+\bibitem {ibge2022}
+\btxnamefont {\btxlastnamefont {{Instituto Brasileiro de Geografia e
+  Estatística}}}\btxauthorcolon\ \btxtitlefont {\btxifchangecase {Pesquisa
+  nacional por amostra de domicílios contínua: características gerais dos
+  domicílios e dos moradores 2022}{Pesquisa Nacional por Amostra de
+  Domicílios Contínua: características gerais dos domicílios e dos
+  moradores 2022}}.
+\newblock \btxtechreplong {}, IBGE, Rio de Janeiro, 2022.
+\newblock {\latintext
+  \btxurlfont{https://biblioteca.ibge.gov.br/visualizacao/livros/liv101957_informativo.pdf}}\empty
+  \btxurldatecomment {\btxkeywordlanguage {\btxurldatefont{2023-10-15}}}.
+
+\end{thebibliography}

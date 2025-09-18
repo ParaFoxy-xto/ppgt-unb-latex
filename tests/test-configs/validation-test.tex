@@ -1,0 +1,57 @@
+%% Teste de validação para verificar tratamento de erros
+%% Este arquivo propositalmente omite campos obrigatórios para testar
+%% o sistema de validação da classe UnB-PPGT
+
+\documentclass[mestrado,12pt]{UnB-PPGT}
+
+%% PROPOSITALMENTE OMITE CAMPOS OBRIGATÓRIOS
+%% Este documento deve falhar na compilação com mensagens de erro claras
+
+%% Campos omitidos intencionalmente:
+%% - \titulo{}
+%% - \autor{}{}
+%% - \orientador{}{}
+%% - \diamesano{}{}{}
+%% - \coordenador{}{}
+%% - \membrobancafunc{}{}{} (banca)
+%% - \palavraschave{}{}
+%% - \keywords{}{}
+
+\begin{document}
+
+\pretextual
+
+%% Tentativa de gerar páginas sem metadados
+%% Deve resultar em erros de validação
+\capa
+\folhaderosto
+\folhadeaprovacao
+
+\textual
+
+\chapter{Teste de Validação}
+
+Este documento foi criado propositalmente sem os campos obrigatórios para testar o sistema de validação de erros da classe UnB-PPGT.
+
+O sistema deve detectar os seguintes problemas:
+\begin{itemize}
+\item Título não definido
+\item Autor não definido
+\item Orientador não definido
+\item Data de defesa não definida
+\item Coordenador não definido
+\item Banca examinadora não definida
+\item Palavras-chave não definidas
+\end{itemize}
+
+\section{Comportamento Esperado}
+
+A compilação deste documento deve falhar com mensagens de erro claras e informativas, indicando exatamente quais campos obrigatórios estão faltando e como corrigi-los.
+
+\chapter{Conclusão}
+
+Se este documento compilar sem erros, isso indica uma falha no sistema de validação da classe UnB-PPGT.
+
+\postextual
+
+\end{document}

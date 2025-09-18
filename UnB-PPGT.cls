@@ -1,8 +1,42 @@
+%%
+%% ============================================================================
+%% CLASSE LaTeX PARA DISSERTAÇÕES E TESES DO PPGT-UnB
+%% ============================================================================
+%%
+%% Esta classe LaTeX foi desenvolvida especificamente para dissertações e teses
+%% do Programa de Pós-Graduação em Transportes (PPGT) da Universidade de Brasília.
+%%
+%% Baseada no template Word oficial do PPGT e inspirada na elegante classe UnB-CIC,
+%% esta classe oferece:
+%% - Geração automática de todas as páginas pré-textuais
+%% - Formatação conforme normas do programa
+%% - Interface simples e intuitiva
+%% - Sistema robusto de validação e tratamento de erros
+%% - Compatibilidade com pdfLaTeX, XeLaTeX e LuaLaTeX
+%%
+%% Autor: Equipe PPGT-UnB
+%% Versão: 1.2.0
+%% Data: 2024-03-15
+%% Licença: MIT
+%%
+%% Para documentação completa, consulte o README.md
+%% Para reportar problemas: https://github.com/ppgt-unb/latex-template/issues
+%%
+%% ============================================================================
+
 \NeedsTeXFormat{LaTeX2e}[1994/12/01]
 \ProvidesClass{UnB-PPGT}[2024/01/01 Classe para trabalhos PPGT UnB]
 
 %%
-%% --- Contextualização do programa ---
+%% ============================================================================
+%% CONTEXTUALIZAÇÃO INSTITUCIONAL
+%% ============================================================================
+%%
+%% Define as informações institucionais do PPGT-UnB que serão utilizadas
+%% automaticamente na geração das páginas pré-textuais (capa, folha de rosto, etc.)
+%%
+%% Estas definições seguem a hierarquia institucional oficial:
+%% Universidade > Faculdade > Departamento > Programa
 %%
 
 \def\@departamento{Departamento de Engenharia Civil e Ambiental}
@@ -16,35 +50,132 @@
 \def\@pais{Brasil}
 
 %%
-%% --- Definição de opções ---
+%% ============================================================================
+%% SISTEMA DE OPÇÕES DA CLASSE
+%% ============================================================================
 %%
+%% Este sistema permite ao usuário personalizar o comportamento da classe
+%% através de opções passadas no \documentclass[opções]{UnB-PPGT}
+%%
+%% Utiliza o pacote xkeyval para processamento avançado de opções,
+%% permitindo opções com valores e maior flexibilidade.
+%%
+
 \RequirePackage{xkeyval}
 
-% Espaçamento de linhas
-\newif\if@singlespacing
-\newif\if@onehalfspacing
-\newif\if@baselineskip
+%%
+%% --- OPÇÕES DE ESPAÇAMENTO ENTRE LINHAS ---
+%%
+%% Controla o espaçamento entre linhas do documento conforme normas acadêmicas:
+%% - singlespacing: espaçamento simples (1.0)
+%% - onehalfspacing: espaçamento 1,5 (padrão, recomendado pela ABNT)
+%% - doublespacing: espaçamento duplo (2.0)
+%% - baselineskip: usa espaçamento nativo do LaTeX (para casos especiais)
+%%
+
+\newif\if@singlespacing      % Flag para espaçamento simples
+\newif\if@onehalfspacing     % Flag para espaçamento 1,5 (padrão)
+\newif\if@baselineskip       % Flag para usar baselineskip nativo
+
 \DeclareOptionX{singlespacing}{\@singlespacingtrue \@onehalfspacingfalse}
 \DeclareOptionX{onehalfspacing}{\@onehalfspacingtrue \@singlespacingfalse}
 \DeclareOptionX{doublespacing}{\@singlespacingfalse \@onehalfspacingfalse}
 \DeclareOptionX{baselineskip}{\@baselineskiptrue}
 
-% Opções de tipo de documento
-\newif\if@mestrado\@mestradofalse
-\newif\if@doutorado\@doutoradofalse
-\newif\if@qualificacao\@qualificacaofalse
+%%
+%% --- OPÇÕES DE TIPO DE DOCUMENTO ---
+%%
+%% Define o tipo de trabalho acadêmico e configura automaticamente:
+%% - Terminologia específica (dissertação/tese/projeto)
+%% - Textos das páginas pré-textuais
+%% - Requisitos de banca examinadora
+%% - Formatação específica para cada tipo
+%%
+%% Tipos suportados:
+%% - mestrado: Dissertação de Mestrado (padrão)
+%% - doutorado: Tese de Doutorado
+%% - qualificacao: Projeto para qualificação (mestrado ou doutorado)
+%%
 
-\DeclareOptionX{mestrado}{\@mestradotrue%
+\newif\if@mestrado\@mestradofalse          % Flag para dissertação de mestrado
+\newif\if@doutorado\@doutoradofalse        % Flag para tese de doutorado
+\newif\if@qualificacao\@qualificacaofalse  % Flag para qualificação
+
+%% Opção: mestrado (padrão)
+%% Configura todos os textos e requisitos para dissertação de mestrado
+\DeclareOptionX{mestrado}{\@mestradotrue\@doutoradofalse\@qualificacaofalse%
     \gdef\@tipodocumento{Disserta\c{c}\~ao}%
     \gdef\@graudocumento{DISSERTA\c{C}\~AO DE MESTRADO EM TRANSPORTES}%
-    \gdef\@assunto{Disserta\c{c}\~ao (Mestrado em Transportes)}}%
+    \gdef\@assunto{Disserta\c{c}\~ao (Mestrado em Transportes)}%
+    \gdef\@grauacademico{Mestre}%
+    \gdef\@tipotrabalhocompleto{Disserta\c{c}\~ao de Mestrado}%
+    \gdef\@requisitograu{obten\c{c}\~ao do Grau de Mestre em Transportes}%
+    \gdef\@tipobanca{defesa}%
+    \gdef\@membrosminimos{3}}% Mínimo de 3 membros na banca
 
-\DeclareOptionX{doutorado}{\@doutoradotrue%
+\DeclareOptionX{doutorado}{\@doutoradotrue\@mestradofalse\@qualificacaofalse%
     \gdef\@tipodocumento{Tese}%
     \gdef\@graudocumento{TESE DE DOUTORADO EM TRANSPORTES}%
-    \gdef\@assunto{Tese (Doutorado em Transportes)}}%
+    \gdef\@assunto{Tese (Doutorado em Transportes)}%
+    \gdef\@grauacademico{Doutor}%
+    \gdef\@tipotrabalhocompleto{Tese de Doutorado}%
+    \gdef\@requisitograu{obten\c{c}\~ao do Grau de Doutor em Transportes}%
+    \gdef\@tipobanca{defesa}%
+    \gdef\@membrosminimos{4}}%
 
-\DeclareOptionX{qualificacao}{\@qualificacaotrue}%
+\DeclareOptionX{qualificacao}{\@qualificacaotrue%
+    % Para qualificação, precisa determinar se é mestrado ou doutorado
+    \@ifundefined{@tipodocumento}{%
+        % Se não foi definido ainda, assume mestrado por padrão
+        \@mestradotrue\@doutoradofalse%
+        \gdef\@tipodocumento{Projeto de Disserta\c{c}\~ao}%
+        \gdef\@graudocumento{QUALIFICA\c{C}\~AO DE MESTRADO EM TRANSPORTES}%
+        \gdef\@assunto{Qualifica\c{c}\~ao (Mestrado em Transportes)}%
+        \gdef\@grauacademico{Mestre}%
+        \gdef\@tipotrabalhocompleto{Projeto de Disserta\c{c}\~ao}%
+        \gdef\@requisitograu{qualifica\c{c}\~ao no Mestrado em Transportes}%
+        \gdef\@tipobanca{qualifica\c{c}\~ao}%
+        \gdef\@membrosminimos{3}%
+    }{%
+        % Se já foi definido, adapta para qualificação
+        \if@mestrado%
+            \gdef\@tipodocumento{Projeto de Disserta\c{c}\~ao}%
+            \gdef\@graudocumento{QUALIFICA\c{C}\~AO DE MESTRADO EM TRANSPORTES}%
+            \gdef\@assunto{Qualifica\c{c}\~ao (Mestrado em Transportes)}%
+            \gdef\@tipotrabalhocompleto{Projeto de Disserta\c{c}\~ao}%
+            \gdef\@requisitograu{qualifica\c{c}\~ao no Mestrado em Transportes}%
+        \fi%
+        \if@doutorado%
+            \gdef\@tipodocumento{Projeto de Tese}%
+            \gdef\@graudocumento{QUALIFICA\c{C}\~AO DE DOUTORADO EM TRANSPORTES}%
+            \gdef\@assunto{Qualifica\c{c}\~ao (Doutorado em Transportes)}%
+            \gdef\@tipotrabalhocompleto{Projeto de Tese}%
+            \gdef\@requisitograu{qualifica\c{c}\~ao no Doutorado em Transportes}%
+        \fi%
+        \gdef\@tipobanca{qualifica\c{c}\~ao}%
+        \gdef\@membrosminimos{3}%
+    }}%
+
+% Opções combinadas para qualificação específica
+\DeclareOptionX{qualificacao-mestrado}{\@qualificacaotrue\@mestradotrue\@doutoradofalse%
+    \gdef\@tipodocumento{Projeto de Disserta\c{c}\~ao}%
+    \gdef\@graudocumento{QUALIFICA\c{C}\~AO DE MESTRADO EM TRANSPORTES}%
+    \gdef\@assunto{Qualifica\c{c}\~ao (Mestrado em Transportes)}%
+    \gdef\@grauacademico{Mestre}%
+    \gdef\@tipotrabalhocompleto{Projeto de Disserta\c{c}\~ao}%
+    \gdef\@requisitograu{qualifica\c{c}\~ao no Mestrado em Transportes}%
+    \gdef\@tipobanca{qualifica\c{c}\~ao}%
+    \gdef\@membrosminimos{3}}%
+
+\DeclareOptionX{qualificacao-doutorado}{\@qualificacaotrue\@doutoradotrue\@mestradofalse%
+    \gdef\@tipodocumento{Projeto de Tese}%
+    \gdef\@graudocumento{QUALIFICA\c{C}\~AO DE DOUTORADO EM TRANSPORTES}%
+    \gdef\@assunto{Qualifica\c{c}\~ao (Doutorado em Transportes)}%
+    \gdef\@grauacademico{Doutor}%
+    \gdef\@tipotrabalhocompleto{Projeto de Tese}%
+    \gdef\@requisitograu{qualifica\c{c}\~ao no Doutorado em Transportes}%
+    \gdef\@tipobanca{qualifica\c{c}\~ao}%
+    \gdef\@membrosminimos{3}}%
 
 % Modo de geração do PDF
 \newif\if@ForScreenView
@@ -113,17 +244,38 @@
 \LoadClass[\@fontsize]{report}
 
 %%
-%% --- Pacotes requeridos ---
+%% ============================================================================
+%% CARREGAMENTO DE PACOTES ESSENCIAIS
+%% ============================================================================
+%%
+%% Esta seção carrega todos os pacotes LaTeX necessários para o funcionamento
+%% da classe. Os pacotes são carregados em ordem específica para evitar conflitos.
+%%
+%% IMPORTANTE: Não modifique esta seção sem conhecimento avançado de LaTeX,
+%% pois a ordem de carregamento é crucial para compatibilidade.
 %%
 
-\RequirePackage[brazil,american]{babel}% Idiomas
-\RequirePackage[fixlanguage]{babelbib}%  Idioma das referências
-\RequirePackage[utf8]{inputenc}%         Arquivos na codificação UTF-8
-\RequirePackage[T1]{fontenc}%            Habilita busca com caracteres latinos
-\RequirePackage{lmodern}%                Habilita busca com caracteres latinos
-\RequirePackage{amsmath}%				 Ambiente para equações
-\RequirePackage{xcolor}% 				 Necessário para algum pacote não identificado
-\RequirePackage[figure,table]{totalcount}%
+%%
+%% --- PACOTES PARA IDIOMA E CODIFICAÇÃO ---
+%%
+\RequirePackage[brazil,american]{babel}% Suporte para português brasileiro e inglês
+\RequirePackage[fixlanguage]{babelbib}%  Corrige idioma das referências bibliográficas
+\RequirePackage[utf8]{inputenc}%         Permite caracteres UTF-8 nos arquivos fonte
+\RequirePackage[T1]{fontenc}%            Codificação de fontes para caracteres acentuados
+\RequirePackage{lmodern}%                Fontes Latin Modern (melhora busca em PDFs)
+
+%%
+%% --- PACOTES PARA MATEMÁTICA E CORES ---
+%%
+\RequirePackage{amsmath}%                Ambientes matemáticos avançados
+\RequirePackage{xcolor}%                 Sistema de cores (usado por outros pacotes)
+
+%%
+%% --- PACOTES PARA CONTADORES E ESTATÍSTICAS ---
+%%
+\RequirePackage[figure,table]{totalcount}% Conta total de figuras e tabelas
+
+
 
 \@ifundefined{XeTeXversion}{%
 	\PassOptionsToPackage{pdftex}{hyperref}
@@ -150,6 +302,29 @@
 \if@LoadHyperref
 	\RequirePackage[hidelinks]{hyperref}%
 \fi
+
+%%
+%% --- Carregamento de pacotes de bibliografia ---
+%%
+
+%%
+%% --- Configuração básica de bibliografia ---
+%%
+
+% Carrega natbib por padrão para melhor suporte a citações
+\RequirePackage[round,sort,comma,authoryear]{natbib}
+
+% Define estilo bibliográfico compatível com author-year
+\bibliographystyle{plainnat}
+
+% Configurações específicas do natbib para PPGT
+\setlength{\bibsep}{6pt}% Espaçamento entre entradas
+\renewcommand{\bibfont}{\small}% Fonte menor para bibliografia
+
+% Comandos de citação simplificados (definidos após natbib)
+\newcommand{\citeonline}[1]{\citet{#1}}% Citação no texto
+\renewcommand{\cite}[1]{\citep{#1}}% Citação entre parênteses
+\providecommand{\citeauthoryear}[1]{\citeauthor{#1} (\citeyear{#1})}% Autor (ano)
 
 \usepackage[acronym,nonumberlist]{glossaries}% Após o hyperref!
 \makeglossaries%
@@ -277,6 +452,21 @@
 	\newcommand{\@pagestyle}[1]{\pagestyle{#1}}
 }
 
+% Comando para inicializar sistema de numeração
+\newcommand{\@inicializarnumeracao}{%
+	% Configura estilos de página
+	\@configurarpaginaspretextuais
+	\@configurarpaginastextuais
+	\@configurarpaginascapitulos
+	
+	% Aplica configurações iniciais
+	\configurarmargens
+	\configurarespacamento
+	
+	% Define estilo padrão como plain até pretextual ser chamado
+	\pagestyle{plain}
+}
+
 %%
 %% --- Adaptação da classe-base ---
 %%
@@ -399,12 +589,34 @@
 
 % Configura a seção de referências
 \expandafter\let\expandafter\@bibliography\csname bibliography\endcsname%
+
+% Comando aprimorado para bibliografia com natbib
 \renewcommand{\bibliography}[1]{%
-	% renomeia a seção após influência maligna do Babel
-	\renewcommand*{\bibname}
-		{\@ifundefined{XeTeXversion}{Refer\^encias}{Referências}}
-	\addtocchapter{\bibname}
-	\singlespacing\@bibliography{#1}\defaultspacing}
+	% Evita chamadas duplicadas
+	\@ifundefined{@bibliographycalled}{%
+		\gdef\@bibliographycalled{true}%
+		
+		% renomeia a seção após influência maligna do Babel
+		\renewcommand*{\bibname}
+			{\@ifundefined{XeTeXversion}{Refer\^encias}{Referências}}
+		
+		\addtocchapter{\bibname}
+		
+		% Aplica espaçamento simples na bibliografia
+		\singlespacing
+		
+		% Usa o comando tradicional do natbib/BibTeX
+		\@bibliography{#1}
+		
+		% Restaura espaçamento padrão
+		\defaultspacing
+	}{}%
+}
+
+% Comando para definir estilo bibliográfico (removido para evitar conflito)
+
+% Comando alternativo para compatibilidade
+\newcommand{\bibliographyfile}[1]{\bibliography{#1}}
 
 % Maketitle para gerar as páginas iniciais
 \def\maketitle{%
@@ -442,14 +654,37 @@
 }{}
 
 %%
-%% --- Sistema de tratamento de erros e validação ---
+%% ============================================================================
+%% SISTEMA DE TRATAMENTO DE ERROS E VALIDAÇÃO
+%% ============================================================================
+%%
+%% Este sistema implementa validação robusta de entrada do usuário e tratamento
+%% inteligente de erros, fornecendo mensagens claras e sugestões de correção.
+%%
+%% CARACTERÍSTICAS:
+%% - Validação automática de campos obrigatórios
+%% - Mensagens de erro claras e informativas
+%% - Sugestões de correção para problemas comuns
+%% - Sistema de fallbacks para recursos não disponíveis
+%% - Verificação de compatibilidade entre pacotes
+%% - Diagnóstico automático do ambiente LaTeX
+%%
+%% O sistema pode ser desabilitado para usuários avançados, mas é recomendado
+%% mantê-lo ativo durante o desenvolvimento do documento.
 %%
 
-% Contadores para controle de validação
-\newif\if@validacaoativada\@validacaoativadatrue
-\newif\if@errosencontrados\@errosencontradosfalse
+%%
+%% --- CONTROLE DE VALIDAÇÃO ---
+%%
+\newif\if@validacaoativada\@validacaoativadatrue  % Validação ativa por padrão
+\newif\if@errosencontrados\@errosencontradosfalse % Flag para rastrear erros
 
-% Comando para desabilitar validação (uso avançado)
+%%
+%% --- COMANDOS DE CONTROLE (USO AVANÇADO) ---
+%%
+%% Permite desabilitar/habilitar validação manualmente
+%% CUIDADO: Desabilitar validação pode resultar em documentos malformados
+%%
 \newcommand{\desabilitarvalidacao}{\@validacaoativadafalse}
 \newcommand{\habilitarvalidacao}{\@validacaoativadatrue}
 
@@ -580,7 +815,7 @@
 \newcommand{\@configurarfallbacks}{%
 	% Fallback para textlinf (lining figures)
 	\@ifundefined{textlinf}{%
-		\newcommand{\textlinf}[1]{#1}%
+		\newcommand{\textlinf}[1]{##1}%
 		\@warningppgt{Comando textlinf nao disponivel}%
 			{Usando numeracao normal em vez de lining figures}%
 	}{}%
@@ -616,7 +851,7 @@
 		% Define comandos básicos para evitar erros
 		\providecommand{\makeglossaries}{}%
 		\providecommand{\printglossaries}{}%
-		\providecommand{\gls}[1]{#1}%
+		\providecommand{\gls}[1]{##1}%
 		\providecommand{\newacronym}[3]{}%
 	}%
 	
@@ -697,6 +932,27 @@
 	}%
 }
 
+% Validação específica de bibliografia
+\newcommand{\@validarbibliografia}{%
+	\if@validacaoativada%
+		% Verifica se natbib foi carregado corretamente
+		\@ifpackageloaded{natbib}{%
+			\typeout{INFO: natbib carregado com sucesso}%
+		}{%
+			\@warningppgt{natbib nao foi carregado}%
+				{Verifique se o pacote natbib esta instalado}%
+		}%
+		
+		% Avisa sobre necessidade de arquivo de bibliografia
+		\AtEndDocument{%
+			\@ifundefined{@bibliography}{%
+				\@warningppgt{Nenhum arquivo de bibliografia especificado}%
+					{Use o comando \protect\bibliography{arquivo} para incluir referencias}%
+			}{}%
+		}%
+	\fi%
+}
+
 % Sistema de diagnóstico completo
 \newcommand{\@diagnosticoppgt}{%
 	\if@validacaoativada%
@@ -706,6 +962,7 @@
 		\typeout{Compilador: \@ifundefined{XeTeXversion}{\@ifundefined{luatexversion}{pdfTeX}{LuaTeX}}{XeTeX}}%
 		\typeout{Modo: \if@ForScreenView digital\else impressao\fi}%
 		\typeout{Espacamento: \if@singlespacing simples\else\if@onehalfspacing 1,5\else duplo\fi\fi}%
+		\typeout{Bibliografia: natbib (padrao)}%
 		\typeout{Validacao: \if@validacaoativada ativa\else desabilitada\fi}%
 		\typeout{===============================}%
 	\fi%
@@ -718,6 +975,8 @@
 	\@validardistribuicao%
 	\@verificarcompatibilidade%
 	\@configurarfallbacks%
+	\@validarbibliografia%
+	\verificarcompatibilidadetipo%
 	
 	% Validação de campos obrigatórios básicos
 	\@validarcampoobrigatorio{@titulodefinido}{titulo}{\titulo}%
@@ -737,14 +996,22 @@
 		}%
 	}%
 	
-	% Validação da banca se não for qualificação
-	\if@qualificacao\else%
-		\ifnum\value{membrobancacount}<2\relax%
+	% Validação da banca baseada no tipo de documento
+	\@ifundefined{@membrosminimos}{%
+		% Fallback se @membrosminimos não estiver definido
+		\ifnum\value{membrobancacount}<3\relax%
 			\@erroppgt{Numero insuficiente de membros da banca: \themembrobancacount}%
 				{Uma banca deve ter pelo menos 3 membros. Use \protect\membrobanca para adicionar mais membros}%
 				{Banca com menos de 3 membros pode nao atender aos requisitos institucionais}%
 		\fi%
-	\fi%
+	}{%
+		% Usa o número mínimo definido para o tipo de documento
+		\ifnum\value{membrobancacount}<\@membrosminimos\relax%
+			\@erroppgt{Numero insuficiente de membros da banca: \themembrobancacount}%
+				{Uma banca de \@tipobanca\ deve ter pelo menos \@membrosminimos\ membros. Use \protect\membrobanca para adicionar mais membros}%
+				{Banca com menos de \@membrosminimos\ membros pode nao atender aos requisitos institucionais para \@tipobanca}%
+		\fi%
+	}%
 	
 	% Relatório final de validação
 	\if@errosencontrados%
@@ -805,6 +1072,137 @@
 		
 		\typeout{================================}%
 	\fi%
+}
+
+% Sistema de transição entre tipos de documento
+\newcommand{\mudartipodocumento}[1]{%
+	\@ifundefined{@maketitlecalled}{%
+		% Permite mudança apenas antes de maketitle ser chamado
+		\def\@temptipo{#1}%
+		\def\@tempmestrado{mestrado}%
+		\def\@tempdoutorado{doutorado}%
+		\def\@tempqualificacao{qualificacao}%
+		\def\@tempqualimestrado{qualificacao-mestrado}%
+		\def\@tempqualidoutorado{qualificacao-doutorado}%
+		
+		\ifx\@temptipo\@tempmestrado%
+			\@mestradotrue\@doutoradofalse\@qualificacaofalse%
+			\gdef\@tipodocumento{Disserta\c{c}\~ao}%
+			\gdef\@graudocumento{DISSERTA\c{C}\~AO DE MESTRADO EM TRANSPORTES}%
+			\gdef\@assunto{Disserta\c{c}\~ao (Mestrado em Transportes)}%
+			\gdef\@grauacademico{Mestre}%
+			\gdef\@tipotrabalhocompleto{Disserta\c{c}\~ao de Mestrado}%
+			\gdef\@requisitograu{obten\c{c}\~ao do Grau de Mestre em Transportes}%
+			\gdef\@tipobanca{defesa}%
+			\gdef\@membrosminimos{3}%
+		\else\ifx\@temptipo\@tempdoutorado%
+			\@doutoradotrue\@mestradofalse\@qualificacaofalse%
+			\gdef\@tipodocumento{Tese}%
+			\gdef\@graudocumento{TESE DE DOUTORADO EM TRANSPORTES}%
+			\gdef\@assunto{Tese (Doutorado em Transportes)}%
+			\gdef\@grauacademico{Doutor}%
+			\gdef\@tipotrabalhocompleto{Tese de Doutorado}%
+			\gdef\@requisitograu{obten\c{c}\~ao do Grau de Doutor em Transportes}%
+			\gdef\@tipobanca{defesa}%
+			\gdef\@membrosminimos{4}%
+		\else\ifx\@temptipo\@tempqualificacao%
+			\@qualificacaotrue%
+			\if@mestrado%
+				\gdef\@tipodocumento{Projeto de Disserta\c{c}\~ao}%
+				\gdef\@graudocumento{QUALIFICA\c{C}\~AO DE MESTRADO EM TRANSPORTES}%
+				\gdef\@assunto{Qualifica\c{c}\~ao (Mestrado em Transportes)}%
+				\gdef\@tipotrabalhocompleto{Projeto de Disserta\c{c}\~ao}%
+				\gdef\@requisitograu{qualifica\c{c}\~ao no Mestrado em Transportes}%
+			\fi%
+			\if@doutorado%
+				\gdef\@tipodocumento{Projeto de Tese}%
+				\gdef\@graudocumento{QUALIFICA\c{C}\~AO DE DOUTORADO EM TRANSPORTES}%
+				\gdef\@assunto{Qualifica\c{c}\~ao (Doutorado em Transportes)}%
+				\gdef\@tipotrabalhocompleto{Projeto de Tese}%
+				\gdef\@requisitograu{qualifica\c{c}\~ao no Doutorado em Transportes}%
+			\fi%
+			\gdef\@tipobanca{qualifica\c{c}\~ao}%
+			\gdef\@membrosminimos{3}%
+		\else\ifx\@temptipo\@tempqualimestrado%
+			\@qualificacaotrue\@mestradotrue\@doutoradofalse%
+			\gdef\@tipodocumento{Projeto de Disserta\c{c}\~ao}%
+			\gdef\@graudocumento{QUALIFICA\c{C}\~AO DE MESTRADO EM TRANSPORTES}%
+			\gdef\@assunto{Qualifica\c{c}\~ao (Mestrado em Transportes)}%
+			\gdef\@grauacademico{Mestre}%
+			\gdef\@tipotrabalhocompleto{Projeto de Disserta\c{c}\~ao}%
+			\gdef\@requisitograu{qualifica\c{c}\~ao no Mestrado em Transportes}%
+			\gdef\@tipobanca{qualifica\c{c}\~ao}%
+			\gdef\@membrosminimos{3}%
+		\else\ifx\@temptipo\@tempqualidoutorado%
+			\@qualificacaotrue\@doutoradotrue\@mestradofalse%
+			\gdef\@tipodocumento{Projeto de Tese}%
+			\gdef\@graudocumento{QUALIFICA\c{C}\~AO DE DOUTORADO EM TRANSPORTES}%
+			\gdef\@assunto{Qualifica\c{c}\~ao (Doutorado em Transportes)}%
+			\gdef\@grauacademico{Doutor}%
+			\gdef\@tipotrabalhocompleto{Projeto de Tese}%
+			\gdef\@requisitograu{qualifica\c{c}\~ao no Doutorado em Transportes}%
+			\gdef\@tipobanca{qualifica\c{c}\~ao}%
+			\gdef\@membrosminimos{3}%
+		\else%
+			\@erroppgt{Tipo de documento invalido: #1}%
+				{Tipos validos: mestrado, doutorado, qualificacao, qualificacao-mestrado, qualificacao-doutorado}%
+				{Tipo de documento nao reconhecido}%
+		\fi\fi\fi\fi\fi%
+		
+		\@warningppgt{Tipo de documento alterado para: #1}%
+			{Configuracoes atualizadas para o novo tipo de documento}%
+	}{%
+		\@erroppgt{Nao e possivel alterar tipo de documento apos maketitle}%
+			{O tipo de documento deve ser definido antes da geracao das paginas pre-textuais}%
+			{Alteracao de tipo apos maketitle pode causar inconsistencias}%
+	}%
+}
+
+% Comando para verificar compatibilidade entre tipos
+\newcommand{\verificarcompatibilidadetipo}{%
+	% Verifica se apenas um tipo está ativo (exceto qualificação que pode coexistir)
+	\newcounter{tiposativos}%
+	\if@mestrado\stepcounter{tiposativos}\fi%
+	\if@doutorado\stepcounter{tiposativos}\fi%
+	
+	\ifnum\value{tiposativos}>1\relax%
+		\@erroppgt{Multiplos tipos de documento ativos}%
+			{Apenas um tipo base (mestrado ou doutorado) pode estar ativo}%
+			{Configuracao inconsistente pode causar problemas na formatacao}%
+	\fi%
+	
+	\ifnum\value{tiposativos}=0\relax%
+		\@erroppgt{Nenhum tipo de documento definido}%
+			{Defina o tipo usando as opcoes mestrado, doutorado ou qualificacao}%
+			{Sem tipo definido, o documento nao pode ser formatado corretamente}%
+	\fi%
+	
+	% Verifica se qualificação tem um tipo base
+	\if@qualificacao%
+		\ifnum\value{tiposativos}=0\relax%
+			\@erroppgt{Qualificacao sem tipo base definido}%
+				{Qualificacao deve ser combinada com mestrado ou doutorado}%
+				{Use qualificacao-mestrado ou qualificacao-doutorado}%
+		\fi%
+	\fi%
+}
+
+% Comando para obter informações do tipo atual
+\newcommand{\infotipodocumento}{%
+	\typeout{=== INFORMACOES DO TIPO DE DOCUMENTO ===}%
+	\typeout{Tipo de documento: \@tipodocumento}%
+	\typeout{Grau do documento: \@graudocumento}%
+	\typeout{Assunto: \@assunto}%
+	\typeout{Grau academico: \@grauacademico}%
+	\typeout{Tipo de trabalho completo: \@tipotrabalhocompleto}%
+	\typeout{Requisito para grau: \@requisitograu}%
+	\typeout{Tipo de banca: \@tipobanca}%
+	\typeout{Membros minimos da banca: \@membrosminimos}%
+	\typeout{Flags ativas:}%
+	\if@mestrado\typeout{  - Mestrado: SIM}\else\typeout{  - Mestrado: NAO}\fi%
+	\if@doutorado\typeout{  - Doutorado: SIM}\else\typeout{  - Doutorado: NAO}\fi%
+	\if@qualificacao\typeout{  - Qualificacao: SIM}\else\typeout{  - Qualificacao: NAO}\fi%
+	\typeout{=========================================}%
 }
 
 % Comando para executar diagnóstico manual
@@ -986,13 +1384,13 @@
 	% Margens conforme especificação PPGT
 	\if@draftthesis
 		% Margens reduzidas para rascunho
-		\geometry{margin={2cm,1.5cm}}
+		\newgeometry{margin={2cm,1.5cm},headheight=13pt,includefoot}
 	\else
 		% Margens oficiais: 3cm esquerda/superior, 2cm direita/inferior
 		\if@ForScreenView
-			\geometry{vmargin={3cm,2cm},hmargin={2.5cm,2.5cm}}
+			\newgeometry{vmargin={3cm,2cm},hmargin={2.5cm,2.5cm},headheight=15pt,includefoot}
 		\else
-			\geometry{vmargin={3cm,2cm},hmargin={3cm,2cm}}
+			\newgeometry{vmargin={3cm,2cm},hmargin={3cm,2cm},headheight=15pt,includefoot}
 		\fi
 	\fi
 }
@@ -1076,6 +1474,7 @@
 % Seção pré-textual com numeração romana
 \newcommand\pretextual{%
 	\gdef\@pretextualcalled{true}% Marca que pretextual foi chamado
+	
 	% Configurações de alinhamento e formatação para páginas pré-textuais
 	\renewcommand{\chapteralign}{\centering}% Títulos centralizados
     \renewcommand{\chapterformat}{\formatocapitulo \thispagestyle{\style@pretextual}}
@@ -1086,9 +1485,10 @@
 	\setcounter{page}{1}% Reinicia contador de páginas
 	
 	% Aplica estilo de página para seção pré-textual
-	\@pagestyle{\style@pretextual}
+	\pagestyle{\style@pretextual}
 	
-	% Configura espaçamento padrão
+	% Configura margens e espaçamento
+	\configurarmargens
 	\configurarespacamento
 	
 	% Contador para total de páginas
@@ -1098,6 +1498,7 @@
 % Seção textual com numeração arábica
 \newcommand\textual{%
 	\gdef\@textualcalled{true}% Marca que textual foi chamado
+	
 	% Configurações de alinhamento e formatação para páginas textuais
 	\renewcommand{\chapteralign}{\raggedright}% Títulos alinhados à esquerda
     \renewcommand{\chapterformat}{\formatocapitulo \thispagestyle{\style@chapter}}
@@ -1108,21 +1509,34 @@
 	\setcounter{page}{1}% Reinicia contador de páginas
 	
 	% Aplica estilo de página para seção textual
-	\@pagestyle{\style@textual}
+	\pagestyle{\style@textual}
 	
 	% Configura formatação de seções e subseções
 	\renewcommand{\thesection}{\thechapter.\@numerosecao{section}}
 	\renewcommand{\thesubsection}{\thesection.\@numerosecao{subsection}}
 	\renewcommand{\thesubsubsection}{\thesubsection.\@numerosecao{subsubsection}}
 	
-	% Configura espaçamento padrão
+	% Configura margens e espaçamento
+	\configurarmargens
 	\configurarespacamento
 }
 
 % Seção pós-textual (anexos, apêndices)
 \newcommand\postextual{%
+	\gdef\@postextualcalled{true}% Marca que postextual foi chamado
+	
 	% Configurações de alinhamento para páginas pós-textuais
 	\renewcommand{\chapteralign}{\centering}% Títulos centralizados
+	
+	% Mantém numeração arábica das páginas textuais
+	% (não reinicia contador de páginas)
+	
+	% Aplica estilo de página textual para pós-textuais
+	\pagestyle{\style@textual}
+	
+	% Configura margens e espaçamento
+	\configurarmargens
+	\configurarespacamento
 	
 	% Mantém numeração arábica mas com formatação específica
 	% Lining figures em section e subsection (quando disponível)
@@ -1178,7 +1592,7 @@
 	\@startsection{section}{1}{\z@}%
 		{-3.5ex \@plus -1ex \@minus -.2ex}% Espaço antes
 		{2.3ex \@plus.2ex}% Espaço depois
-		{\formatosecao}% Formatação
+		{\normalfont\formatosecao}% Formatação
 }
 
 % Configuração de \subsection
@@ -1186,7 +1600,7 @@
 	\@startsection{subsection}{2}{\z@}%
 		{-3.25ex\@plus -1ex \@minus -.2ex}% Espaço antes
 		{1.5ex \@plus .2ex}% Espaço depois
-		{\formatosubsecao}% Formatação
+		{\normalfont\formatosubsecao}% Formatação
 }
 
 % Configuração de \subsubsection
@@ -1194,7 +1608,7 @@
 	\@startsection{subsubsection}{3}{\z@}%
 		{-3.25ex\@plus -1ex \@minus -.2ex}% Espaço antes
 		{1.5ex \@plus .2ex}% Espaço depois
-		{\formatosubsubsecao}% Formatação
+		{\normalfont\formatosubsubsecao}% Formatação
 }
 
 %%
@@ -1226,8 +1640,7 @@
 
 % Aplica configurações de margens automaticamente
 \AtBeginDocument{%
-	\configurarmargens%
-	\configurarespacamento%
+	\@inicializarnumeracao%
 }
 
 %%
@@ -2271,14 +2684,9 @@
 % Comando para gerar texto explicativo sobre o tipo de trabalho
 \newcommand{\@textotipotrabalhofr}{%
 	\if@qualificacao%
-		\@tipodocumento\ apresentada como requisito parcial para qualifica\c{c}\~ao no \@programa\ da \@universidade.%
+		\@tipodocumento\ apresentada como requisito parcial para \@requisitograu\ no \@programa\ da \@universidade.%
 	\else%
-		\if@mestrado%
-			\@tipodocumento\ de Mestrado submetida ao \@programa\ da \@universidade\ como requisito parcial para obten\c{c}\~ao do Grau de Mestre em Transportes.%
-		\fi%
-		\if@doutorado%
-			\@tipodocumento\ de Doutorado submetida ao \@programa\ da \@universidade\ como requisito parcial para obten\c{c}\~ao do Grau de Doutor em Transportes.%
-		\fi%
+		\@tipotrabalhocompleto\ submetida ao \@programa\ da \@universidade\ como requisito parcial para \@requisitograu.%
 	\fi%
 }
 
@@ -2442,7 +2850,7 @@
 	NOME DO AUTOR: \@author\\%
 	T\'ITULO DA \MakeUppercase{\@tipodocumento}: \@maintitle%
 	\@ifundefined{@subtitle}{}{ : \@subtitle}\\%
-	GRAU: \if@mestrado Mestre\fi\if@doutorado Doutor\fi\ em Transportes\\%
+	GRAU: \@grauacademico\ em Transportes\\%
 	ANO: \@ano\\[0.5em]%
 	
 	\'E concedida \`a \@universidade\ permiss\~ao para reproduzir c\'opias desta \MakeLowercase{\@tipodocumento}\ e emprestar ou vender tais c\'opias somente para prop\'ositos acad\^emicos e cient\'ificos. O autor reserva outros direitos de publica\c{c}\~ao e nenhuma parte desta \MakeLowercase{\@tipodocumento}\ pode ser reproduzida sem a autoriza\c{c}\~ao por escrito do autor.\\[1em]%
@@ -2589,7 +2997,7 @@
 	\if@doutorado%
 		\if@qualificacao%
 		\else%
-			\ifnum\themembrobancacount<4\relax%
+			\ifnum\themembrobancacount<\@membrosminimos\relax%
 				\@erroppgt{A banca de doutorado deve ter pelo menos 5 membros (orientador + 4 examinadores)}%
 					{Use o comando \protect\membrobanca{Nome}{Instituicao} para definir os membros}%
 					{Banca de doutorado com numero insuficiente de membros pode nao atender aos requisitos institucionais}%
@@ -2624,14 +3032,9 @@
 % Comando para gerar texto explicativo do tipo de trabalho na folha de aprovação
 \newcommand{\@textotipotrabalhoaprovacao}{%
 	\if@qualificacao%
-		\@tipodocumento\ apresentada como requisito parcial para qualifica\c{c}\~ao no \@programa\ da \@universidade.%
+		\@tipodocumento\ apresentada como requisito parcial para \@requisitograu\ no \@programa\ da \@universidade.%
 	\else%
-		\if@mestrado%
-			\@tipodocumento\ de Mestrado submetida ao \@programa\ da \@universidade\ como requisito parcial para obten\c{c}\~ao do Grau de Mestre em Transportes.%
-		\fi%
-		\if@doutorado%
-			\@tipodocumento\ de Doutorado submetida ao \@programa\ da \@universidade\ como requisito parcial para obten\c{c}\~ao do Grau de Doutor em Transportes.%
-		\fi%
+		\@tipotrabalhocompleto\ submetida ao \@programa\ da \@universidade\ como requisito parcial para \@requisitograu.%
 	\fi%
 }
 
@@ -2666,7 +3069,7 @@
 			
 			% Aprovação e data
 			\if@qualificacao%
-				\textbf{Qualifica\c{c}\~ao aprovada em \@dia\ de \@nomemes\ de \@ano.}%
+				\textbf{\MakeUppercase{\@tipobanca} aprovada em \@dia\ de \@nomemes\ de \@ano.}%
 			\else%
 				\textbf{Trabalho aprovado em \@dia\ de \@nomemes\ de \@ano.}%
 			\fi%
@@ -3084,12 +3487,10 @@
 	% defaultspacing já foi definido anteriormente
 	\defaultspacing% chamada inicial
 
-	% Validação de membros da banca (usando novo sistema)
-	\@validarnumeromembrosbanca%
+	% Validação de membros da banca será feita quando necessário
 
 	% Validação já foi executada no AtBeginDocument
 	% \@conteudoPreTextual% - comando removido pois não está definido
-}
 %%%%%
 %%%%%%%%%%%%%%%%%%%%%
 %%%%% Novos Comandos %%%%%
@@ -3192,7 +3593,6 @@
 \newcommand{\@conteudoPosTextual}{%
 	\@PosTextualNaoInclusofalse%
     \postextual%
-	\bibliographystyle{babunsrt}%
     \bibliography{bibliografia}%
 }%
 
@@ -3209,6 +3609,67 @@
 \newcommand{\refTabs}[2]{\@referencia{Tabelas}{#1}\ a \ref{#2}}%
 \newcommand{\refApendice}[1]{\@referencia{Apêndice}{#1}}%
 \newcommand{\refAnexo}[1]{\@referencia{Anexo}{#1}}%
+
+%%
+%% --- Comandos avançados de citação ---
+%%
+
+% Comandos para citações múltiplas
+\newcommand{\cites}[1]{\cite{#1}}% Citações múltiplas (compatibilidade)
+\newcommand{\citeonlines}[1]{\citeonline{#1}}% Citações múltiplas no texto
+
+% Comandos para citações com página (natbib)
+\newcommand{\citepag}[2]{\citep[#1]{#2}}% Citação com página
+\newcommand{\citeonlinepag}[2]{\citet[#1]{#2}}% Citação no texto com página
+
+% Comandos para citações específicas do PPGT
+\newcommand{\citeapud}[2]{\cite{#1} \textit{apud} \cite{#2}}% Citação apud
+\newcommand{\citeonlineapud}[2]{\citeonline{#1} \textit{apud} \citeonline{#2}}% Citação apud no texto
+
+% Comandos para citações de legislação (comum em transportes)
+\newcommand{\citelaw}[1]{\cite{#1}}% Citação de lei
+\newcommand{\citenorm}[1]{\cite{#1}}% Citação de norma técnica
+
+% Comandos para citações de dados estatísticos
+\newcommand{\citedata}[1]{\cite{#1}}% Citação de dados
+\newcommand{\citereport}[1]{\cite{#1}}% Citação de relatório
+
+%%
+%% --- Formatação específica da bibliografia ---
+%%
+
+% Configurações de formatação para natbib
+\AtBeginDocument{%
+	% Configura separadores e formatação
+	\renewcommand{\bibsection}{%
+		\chapter*{\bibname}%
+		\addcontentsline{toc}{chapter}{\bibname}%
+		\markboth{\bibname}{\bibname}%
+	}
+	
+	% Configurações de espaçamento
+	\setlength{\bibsep}{6pt plus 0.3ex}
+	\renewcommand{\bibfont}{\small}
+	
+	% Configurações de citação
+	\bibpunct{(}{)}{;}{a}{,}{,}% Formato de citação
+}
+
+%%
+%% --- Comandos para compatibilidade entre sistemas ---
+%%
+
+% Garante compatibilidade de comandos de citação
+\newcommand{\ensurecompatibility}{%
+	% Define comandos básicos se não existirem (fallback)
+	\providecommand{\citeonline}[1]{\cite{##1}}%
+	\providecommand{\citeauthor}[1]{##1}%
+	\providecommand{\citeyear}[1]{##1}%
+	\providecommand{\citeauthoryear}[1]{##1}%
+}
+
+% Executa verificação de compatibilidade
+\AtBeginDocument{\ensurecompatibility}
 
 \newcommand{\figuraBib}[6][!ht]{%
 	\begin{figure}[#1]%

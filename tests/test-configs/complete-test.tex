@@ -1,0 +1,226 @@
+%% Teste completo para verificação abrangente de funcionalidades
+%% Este arquivo testa todos os elementos disponíveis na classe UnB-PPGT
+
+\documentclass[mestrado,onehalfspacing,12pt,hyperref]{UnB-PPGT}
+
+%% Pacotes adicionais para teste
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{subcaption}
+
+%% Metadados completos
+\titulo{Teste Completo da Classe UnB-PPGT}
+\subtitulo{Verificação Abrangente de Todas as Funcionalidades}
+\autor{Sistema}{de Testes Automatizados}
+\orientador{Prof. Dr. Maria Fernanda Oliveira}{Universidade de Brasília}
+\coorientador{Prof. Dr. Carlos Eduardo Lima}{Universidade Federal de Goiás}
+\diamesano{15}{3}{2024}
+\coordenador{Prof. Dr. Ana Paula Costa}{Universidade de Brasília}
+
+%% Banca completa (5 membros)
+\membrobancafunc{Prof. Dr. Maria Fernanda Oliveira}{Universidade de Brasília}{Orientadora}
+\membrobancafunc{Prof. Dr. Carlos Eduardo Lima}{Universidade Federal de Goiás}{Coorientador}
+\membrobancafunc{Prof. Dr. Roberto Silva}{Universidade de Brasília}{Examinador Interno}
+\membrobancafunc{Prof. Dr. Ana Beatriz Santos}{Universidade Federal de Minas Gerais}{Examinadora Externa}
+\membrobancafunc{Prof. Dr. Pedro Henrique Costa}{Instituto de Pesquisa Econômica Aplicada}{Examinador Externo}
+
+%% Palavras-chave completas
+\palavraschave[Teste. Compilação. LaTeX. PPGT. Validação.]{teste, compilação, latex, ppgt, validação, sistema automatizado}
+\keywords[Test. Compilation. LaTeX. PPGT. Validation.]{test, compilation, latex, ppgt, validation, automated system}
+
+%% Definições para teste
+\newcommand{\sigla}[1]{\textsc{#1}}
+\newcommand{\software}[1]{\textit{#1}}
+
+\begin{document}
+
+\pretextual
+
+%% Todas as páginas pré-textuais
+\capa
+\folhaderosto
+\folhadeaprovacao
+\fichacatalografica
+
+%% Dedicatória
+\begin{dedicatoria}
+Dedicamos este teste automatizado a todos os desenvolvedores e usuários da classe UnB-PPGT, que contribuem para a melhoria contínua desta ferramenta.
+\end{dedicatoria}
+
+%% Agradecimentos
+\begin{agradecimentos}
+Agradecemos à comunidade LaTeX pela base sólida que permite o desenvolvimento de classes especializadas como a UnB-PPGT.
+
+Aos desenvolvedores das classes UnB-CIC e FGA-UnB, que serviram de inspiração para este trabalho.
+
+À equipe do PPGT-UnB, pelo apoio e feedback durante o desenvolvimento.
+\end{agradecimentos}
+
+%% Resumo completo
+\begin{resumo}
+Este documento representa um teste completo e abrangente da classe LaTeX UnB-PPGT, desenvolvida especificamente para dissertações e teses do Programa de Pós-Graduação em Transportes da Universidade de Brasília. O objetivo principal é validar todas as funcionalidades implementadas na classe, incluindo geração automática de páginas pré-textuais, formatação de elementos textuais, integração com bibliografia, e compatibilidade com diferentes compiladores LaTeX.
+
+A metodologia de teste inclui verificação de compilação com pdfLaTeX, XeLaTeX e LuaLaTeX, validação de diferentes tipos de documento (mestrado, doutorado, qualificação), e teste de todas as opções de configuração disponíveis. São testados elementos como figuras, tabelas, equações, referências cruzadas, listas automáticas, e formatação de texto.
+
+Os resultados esperados incluem geração correta de todas as páginas pré-textuais conforme template oficial do PPGT, formatação adequada do conteúdo textual seguindo normas acadêmicas, e compatibilidade com diferentes ambientes LaTeX. Este teste serve como validação contínua da qualidade e robustez da classe UnB-PPGT.
+\end{resumo}
+
+%% Abstract completo
+\begin{abstract}
+This document represents a complete and comprehensive test of the UnB-PPGT LaTeX class, developed specifically for dissertations and theses of the Graduate Program in Transportation at the University of Brasília. The main objective is to validate all functionalities implemented in the class, including automatic generation of pre-textual pages, formatting of textual elements, bibliography integration, and compatibility with different LaTeX compilers.
+
+The testing methodology includes compilation verification with pdfLaTeX, XeLaTeX and LuaLaTeX, validation of different document types (master's, doctorate, qualification), and testing of all available configuration options. Elements such as figures, tables, equations, cross-references, automatic lists, and text formatting are tested.
+
+Expected results include correct generation of all pre-textual pages according to the official PPGT template, adequate formatting of textual content following academic standards, and compatibility with different LaTeX environments. This test serves as continuous validation of the quality and robustness of the UnB-PPGT class.
+\end{abstract}
+
+%% Listas automáticas
+\listoffigures
+\listoftables
+
+%% Lista de siglas
+\begin{siglas}
+\item[ABNT] Associação Brasileira de Normas Técnicas
+\item[LaTeX] \textit{Lamport TeX}
+\item[PDF] \textit{Portable Document Format}
+\item[PPGT] Programa de Pós-Graduação em Transportes
+\item[UnB] Universidade de Brasília
+\item[UTF-8] \textit{Unicode Transformation Format - 8 bits}
+\end{siglas}
+
+\textual
+
+%% Capítulos de teste
+\chapter{Introdução}
+\label{cap:introducao}
+
+Este capítulo introduz o sistema de testes automatizados da classe UnB-PPGT. O objetivo é validar todas as funcionalidades implementadas através de compilação automatizada e verificação de resultados.
+
+\section{Objetivos do Teste}
+\label{sec:objetivos}
+
+Os objetivos específicos deste teste incluem:
+
+\begin{itemize}
+\item Verificar compilação com diferentes engines LaTeX
+\item Validar geração de páginas pré-textuais
+\item Testar formatação de elementos textuais
+\item Verificar integração com bibliografia
+\item Validar compatibilidade com pacotes externos
+\end{itemize}
+
+\section{Metodologia de Teste}
+\label{sec:metodologia}
+
+A metodologia adotada segue as melhores práticas de teste automatizado, conforme descrito na \autoref{sec:objetivos}.
+
+\chapter{Elementos de Teste}
+\label{cap:elementos}
+
+Este capítulo apresenta diversos elementos para teste de formatação.
+
+\section{Figuras}
+\label{sec:figuras}
+
+A \autoref{fig:exemplo} apresenta um exemplo de figura para teste.
+
+\begin{figure}[htbp]
+\centering
+\fbox{\parbox{8cm}{\centering Esta é uma figura de exemplo\\para teste de formatação}}
+\caption{Exemplo de figura para teste}
+\label{fig:exemplo}
+\end{figure}
+
+\section{Tabelas}
+\label{sec:tabelas}
+
+A \autoref{tab:exemplo} apresenta um exemplo de tabela para teste.
+
+\begin{table}[htbp]
+\centering
+\caption{Exemplo de tabela para teste}
+\label{tab:exemplo}
+\begin{tabular}{@{}lcc@{}}
+\toprule
+\textbf{Item} & \textbf{Valor 1} & \textbf{Valor 2} \\
+\midrule
+Teste A & 10,5 & 15,2 \\
+Teste B & 8,3 & 12,7 \\
+Teste C & 9,1 & 14,8 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Equações}
+\label{sec:equacoes}
+
+A \autoref{eq:exemplo} apresenta um exemplo de equação para teste.
+
+\begin{equation}
+E = mc^2
+\label{eq:exemplo}
+\end{equation}
+
+Onde $E$ é a energia, $m$ é a massa e $c$ é a velocidade da luz.
+
+\section{Listas}
+\label{sec:listas}
+
+Exemplo de lista numerada:
+
+\begin{enumerate}
+\item Primeiro item da lista
+\item Segundo item da lista
+\item Terceiro item da lista
+\end{enumerate}
+
+Exemplo de lista com marcadores:
+
+\begin{itemize}
+\item Item com marcador
+\item Outro item com marcador
+\item Terceiro item com marcador
+\end{itemize}
+
+\chapter{Validação de Formatação}
+\label{cap:validacao}
+
+Este capítulo valida aspectos específicos da formatação.
+
+\section{Espaçamento e Margens}
+\label{sec:espacamento}
+
+O espaçamento entre linhas deve seguir a configuração especificada nas opções da classe. As margens devem estar conforme as normas do PPGT.
+
+\section{Numeração}
+\label{sec:numeracao}
+
+A numeração de páginas, capítulos, seções, figuras, tabelas e equações deve seguir o padrão estabelecido.
+
+\section{Referências Cruzadas}
+\label{sec:referencias}
+
+As referências cruzadas devem funcionar corretamente:
+\begin{itemize}
+\item Referência a capítulo: \autoref{cap:introducao}
+\item Referência a seção: \autoref{sec:objetivos}
+\item Referência a figura: \autoref{fig:exemplo}
+\item Referência a tabela: \autoref{tab:exemplo}
+\item Referência a equação: \autoref{eq:exemplo}
+\end{itemize}
+
+\chapter{Conclusão}
+\label{cap:conclusao}
+
+Este teste automatizado valida o funcionamento correto da classe UnB-PPGT em diferentes cenários e configurações. A execução bem-sucedida deste teste indica que a classe está funcionando adequadamente.
+
+\postextual
+
+%% Bibliografia (mesmo sem referências, testa o sistema)
+\begin{thebibliography}{1}
+\bibitem{latex} LAMPORT, Leslie. \textbf{LaTeX: A Document Preparation System}. 2nd ed. Boston: Addison-Wesley, 1994.
+\bibitem{ppgt} UNIVERSIDADE DE BRASÍLIA. Programa de Pós-Graduação em Transportes. \textbf{Template para Dissertações e Teses}. Brasília: UnB, 2024.
+\end{thebibliography}
+
+\end{document}

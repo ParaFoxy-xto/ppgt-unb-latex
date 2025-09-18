@@ -1,0 +1,222 @@
+%% Teste específico para documentos de doutorado
+%% Verifica terminologia e formatação específicas para teses
+
+\documentclass[doutorado,onehalfspacing,12pt,hyperref]{UnB-PPGT}
+
+%% Metadados para tese de doutorado
+\titulo{Desenvolvimento de Metodologia Avançada para Análise de Sistemas de Transporte Inteligentes}
+\subtitulo{Uma Abordagem Baseada em Inteligência Artificial e Análise de Big Data}
+\autor{Doutorando}{Teste Sistema}
+\orientador{Prof. Dr. Orientador Principal}{Universidade de Brasília}
+\coorientador{Prof. Dr. Coorientador Especialista}{Universidade Federal de Goiás}
+\diamesano{20}{6}{2024}
+\coordenador{Prof. Dr. Coordenador PPGT}{Universidade de Brasília}
+
+%% Banca de doutorado (mínimo 4 membros, testando com 5)
+\membrobancafunc{Prof. Dr. Orientador Principal}{Universidade de Brasília}{Orientador}
+\membrobancafunc{Prof. Dr. Coorientador Especialista}{Universidade Federal de Goiás}{Coorientador}
+\membrobancafunc{Prof. Dr. Examinador Interno 1}{Universidade de Brasília}{Examinador Interno}
+\membrobancafunc{Prof. Dr. Examinador Interno 2}{Universidade de Brasília}{Examinador Interno}
+\membrobancafunc{Prof. Dr. Examinador Externo 1}{Universidade Federal de Minas Gerais}{Examinador Externo}
+
+%% Palavras-chave para doutorado
+\palavraschave[Sistemas de transporte inteligentes. Inteligência artificial. Big data. Metodologia. Doutorado.]{sistemas de transporte inteligentes, inteligência artificial, big data, metodologia avançada, análise de dados}
+\keywords[Intelligent transportation systems. Artificial intelligence. Big data. Methodology. Doctorate.]{intelligent transportation systems, artificial intelligence, big data, advanced methodology, data analysis}
+
+\begin{document}
+
+\pretextual
+
+%% Páginas pré-textuais para tese
+\capa
+\folhaderosto
+\folhadeaprovacao
+\fichacatalografica
+
+%% Dedicatória
+\begin{dedicatoria}
+Dedico esta tese aos pioneiros da pesquisa em transportes inteligentes, que abriram caminho para as inovações que hoje transformam a mobilidade urbana.
+\end{dedicatoria}
+
+%% Agradecimentos
+\begin{agradecimentos}
+Agradeço ao meu orientador, Prof. Dr. Orientador Principal, pela orientação excepcional e pelo apoio constante durante todo o desenvolvimento desta tese.
+
+Ao meu coorientador, Prof. Dr. Coorientador Especialista, pelas valiosas contribuições técnicas e pela expertise em inteligência artificial aplicada a transportes.
+
+Aos membros da banca examinadora, pela disponibilidade e pelas contribuições que enriqueceram este trabalho.
+
+À CAPES, pelo apoio financeiro através da bolsa de doutorado que viabilizou esta pesquisa.
+
+À minha família, pelo apoio incondicional durante esta jornada acadêmica.
+\end{agradecimentos}
+
+%% Resumo para tese de doutorado
+\begin{resumo}
+Os sistemas de transporte inteligentes (ITS) representam uma revolução na gestão da mobilidade urbana, integrando tecnologias avançadas de comunicação, sensoriamento e processamento de dados. Esta tese apresenta o desenvolvimento de uma metodologia avançada para análise de sistemas de transporte inteligentes, baseada em técnicas de inteligência artificial e análise de big data.
+
+O objetivo principal é criar um framework integrado capaz de processar grandes volumes de dados de tráfego em tempo real, identificar padrões complexos de mobilidade e otimizar automaticamente a operação de sistemas de transporte. A metodologia proposta combina algoritmos de aprendizado de máquina, redes neurais profundas e técnicas de processamento de linguagem natural para análise de dados multimodais.
+
+A pesquisa foi desenvolvida em quatro fases principais: (i) revisão sistemática da literatura sobre ITS e big data; (ii) desenvolvimento do framework metodológico; (iii) implementação de protótipo computacional; e (iv) validação através de estudos de caso em três cidades brasileiras de grande porte.
+
+Os resultados demonstram que a metodologia proposta é capaz de melhorar significativamente a eficiência operacional de sistemas de transporte, reduzindo tempos de viagem em até 25\% e emissões de poluentes em até 18\%. A validação em cenários reais confirmou a aplicabilidade e escalabilidade da solução.
+
+As principais contribuições desta tese incluem: (i) um novo framework metodológico para análise de ITS; (ii) algoritmos inovadores para processamento de big data de transporte; (iii) métricas avançadas de avaliação de desempenho; e (iv) diretrizes para implementação em diferentes contextos urbanos.
+
+A pesquisa abre perspectivas para futuras investigações em áreas como veículos autônomos, cidades inteligentes e sustentabilidade urbana, contribuindo para o avanço do conhecimento científico em engenharia de transportes.
+\end{resumo}
+
+%% Abstract para tese de doutorado
+\begin{abstract}
+Intelligent Transportation Systems (ITS) represent a revolution in urban mobility management, integrating advanced communication, sensing, and data processing technologies. This thesis presents the development of an advanced methodology for analyzing intelligent transportation systems, based on artificial intelligence techniques and big data analysis.
+
+The main objective is to create an integrated framework capable of processing large volumes of traffic data in real time, identifying complex mobility patterns, and automatically optimizing transportation system operations. The proposed methodology combines machine learning algorithms, deep neural networks, and natural language processing techniques for multimodal data analysis.
+
+The research was developed in four main phases: (i) systematic literature review on ITS and big data; (ii) development of the methodological framework; (iii) implementation of computational prototype; and (iv) validation through case studies in three large Brazilian cities.
+
+Results demonstrate that the proposed methodology can significantly improve operational efficiency of transportation systems, reducing travel times by up to 25\% and pollutant emissions by up to 18\%. Validation in real scenarios confirmed the applicability and scalability of the solution.
+
+The main contributions of this thesis include: (i) a new methodological framework for ITS analysis; (ii) innovative algorithms for transportation big data processing; (iii) advanced performance evaluation metrics; and (iv) guidelines for implementation in different urban contexts.
+
+The research opens perspectives for future investigations in areas such as autonomous vehicles, smart cities, and urban sustainability, contributing to the advancement of scientific knowledge in transportation engineering.
+\end{abstract}
+
+%% Listas automáticas
+\listoffigures
+\listoftables
+
+%% Lista de siglas específica para doutorado
+\begin{siglas}
+\item[AI] \textit{Artificial Intelligence}
+\item[API] \textit{Application Programming Interface}
+\item[GPS] \textit{Global Positioning System}
+\item[ITS] \textit{Intelligent Transportation Systems}
+\item[ML] \textit{Machine Learning}
+\item[NLP] \textit{Natural Language Processing}
+\item[PPGT] Programa de Pós-Graduação em Transportes
+\item[RFID] \textit{Radio Frequency Identification}
+\item[SIG] Sistema de Informações Geográficas
+\item[UnB] Universidade de Brasília
+\item[V2I] \textit{Vehicle-to-Infrastructure}
+\item[V2V] \textit{Vehicle-to-Vehicle}
+\end{siglas}
+
+\textual
+
+%% Estrutura típica de tese de doutorado
+\chapter{Introdução}
+\label{cap:introducao}
+
+Esta tese aborda o desenvolvimento de metodologias avançadas para análise de sistemas de transporte inteligentes, representando uma contribuição original ao campo da engenharia de transportes.
+
+\section{Contextualização}
+\label{sec:contextualizacao}
+
+Os sistemas de transporte inteligentes emergem como solução fundamental para os desafios da mobilidade urbana contemporânea.
+
+\section{Problema de Pesquisa}
+\label{sec:problema}
+
+O problema central desta pesquisa refere-se à necessidade de metodologias capazes de processar e analisar eficientemente grandes volumes de dados de transporte.
+
+\section{Objetivos}
+\label{sec:objetivos}
+
+\subsection{Objetivo Geral}
+Desenvolver uma metodologia avançada para análise de sistemas de transporte inteligentes baseada em inteligência artificial e big data.
+
+\subsection{Objetivos Específicos}
+\begin{itemize}
+\item Realizar revisão sistemática da literatura sobre ITS e big data
+\item Desenvolver framework metodológico integrado
+\item Implementar protótipo computacional
+\item Validar a metodologia através de estudos de caso
+\end{itemize}
+
+\chapter{Revisão da Literatura}
+\label{cap:revisao}
+
+Este capítulo apresenta uma revisão sistemática da literatura sobre sistemas de transporte inteligentes e análise de big data.
+
+\section{Sistemas de Transporte Inteligentes}
+\label{sec:its}
+
+Os ITS representam a convergência entre tecnologia da informação e engenharia de transportes.
+
+\section{Big Data em Transportes}
+\label{sec:bigdata}
+
+A aplicação de técnicas de big data em transportes tem crescido exponencialmente na última década.
+
+\chapter{Metodologia}
+\label{cap:metodologia}
+
+Este capítulo descreve a metodologia desenvolvida para análise de sistemas de transporte inteligentes.
+
+\section{Framework Proposto}
+\label{sec:framework}
+
+O framework integra múltiplas tecnologias para processamento e análise de dados de transporte.
+
+\section{Algoritmos Desenvolvidos}
+\label{sec:algoritmos}
+
+Foram desenvolvidos algoritmos específicos para diferentes tipos de análise de dados de transporte.
+
+\chapter{Implementação e Resultados}
+\label{cap:resultados}
+
+Este capítulo apresenta a implementação do protótipo e os resultados obtidos nos estudos de caso.
+
+\section{Protótipo Computacional}
+\label{sec:prototipo}
+
+O protótipo foi desenvolvido utilizando tecnologias de código aberto para garantir reprodutibilidade.
+
+\section{Estudos de Caso}
+\label{sec:estudos}
+
+Foram realizados estudos de caso em três cidades brasileiras de grande porte.
+
+\chapter{Discussão}
+\label{cap:discussao}
+
+Este capítulo discute os resultados obtidos e suas implicações para a área de transportes.
+
+\section{Análise dos Resultados}
+\label{sec:analise}
+
+Os resultados demonstram a eficácia da metodologia proposta em diferentes contextos urbanos.
+
+\section{Limitações}
+\label{sec:limitacoes}
+
+Algumas limitações foram identificadas durante a pesquisa e devem ser consideradas em trabalhos futuros.
+
+\chapter{Conclusões e Trabalhos Futuros}
+\label{cap:conclusoes}
+
+Esta tese apresentou uma metodologia inovadora para análise de sistemas de transporte inteligentes.
+
+\section{Contribuições}
+\label{sec:contribuicoes}
+
+As principais contribuições desta pesquisa incluem avanços metodológicos e tecnológicos significativos.
+
+\section{Trabalhos Futuros}
+\label{sec:futuros}
+
+Diversas oportunidades de pesquisa futura foram identificadas a partir deste trabalho.
+
+\postextual
+
+%% Bibliografia
+\begin{thebibliography}{10}
+\bibitem{its2023} SMITH, John A. \textbf{Intelligent Transportation Systems: A Comprehensive Review}. Transportation Research Part C, v. 95, p. 1-25, 2023.
+
+\bibitem{bigdata2023} JOHNSON, Mary B.; WILLIAMS, Robert C. \textbf{Big Data Analytics in Transportation: Current Trends and Future Directions}. IEEE Transactions on Intelligent Transportation Systems, v. 24, n. 3, p. 1234-1250, 2023.
+
+\bibitem{ai2022} CHEN, Wei; KUMAR, Raj. \textbf{Artificial Intelligence Applications in Smart Transportation}. Journal of Advanced Transportation, v. 2022, Article ID 9876543, 2022.
+\end{thebibliography}
+
+\end{document}
